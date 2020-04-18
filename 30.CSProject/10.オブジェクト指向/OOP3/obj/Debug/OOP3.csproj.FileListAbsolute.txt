@@ -1,0 +1,11 @@
+D:\Document\Github\DDDProject\10.オブジェクト指向\OOP3\bin\Debug\OOP3.exe.config
+D:\Document\Github\DDDProject\10.オブジェクト指向\OOP3\bin\Debug\OOP3.exe
+D:\Document\Github\DDDProject\10.オブジェクト指向\OOP3\bin\Debug\OOP3.pdb
+D:\Document\Github\DDDProject\10.オブジェクト指向\OOP3\obj\Debug\OOP3.csprojAssemblyReference.cache
+D:\Document\Github\DDDProject\10.オブジェクト指向\OOP3\obj\Debug\OOP3.Form1.resources
+D:\Document\Github\DDDProject\10.オブジェクト指向\OOP3\obj\Debug\OOP3.Properties.Resources.resources
+D:\Document\Github\DDDProject\10.オブジェクト指向\OOP3\obj\Debug\OOP3.csproj.GenerateResource.cache
+D:\Document\Github\DDDProject\10.オブジェクト指向\OOP3\obj\Debug\OOP3.exe
+D:\Document\Github\DDDProject\10.オブジェクト指向\OOP3\obj\Debug\OOP3.pdb
+D:\Document\Github\DDDProject\10.オブジェクト指向\OOP3\obj\Debug\OOP3.BaseForm.resources
+D:\Document\Github\DDDProject\10.オブジェクト指向\OOP3\obj\Debug\OOP3.Form2.resources

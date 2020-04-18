@@ -1,0 +1,123 @@
+@startuml
+
+'##############################################
+' 2019/09/12 吉冨 新規作成
+'##############################################
+
+title ドメイン駆動開発 クラス図
+
+' Domain
+package DDD.Domain <<Frame>>{
+
+   ' Entitiy
+   package Entity <<Rectangle>> {
+      class WeatherEntity {
+         + int AreaId
+         + Datetime DataDate
+         + Condition Condition
+         + Temperature Temperature
+         --
+         + bool IsMousho()
+         + bool IsOK()
+      }
+   }
+
+   ' Helpers
+   package Helpers <<Rectangle>> {
+      class FloatHelper{
+         + RoundString(value,decimalPoint)
+      }
+   }
+
+   ' Repositories
+   package Repositories <<Rectangle>> {
+      interface IWeatherRepository{
+         + WeatherEntity GetLatest(int areaId)
+      }
+   }
+
+   ' ValueObjects
+   package ValueObjects <<Rectangle>> {
+      class Condition{
+         + Condition None
+         + Condition Sunny
+         + Condition Cloudy
+         + Condition Rain
+         --
+         + Condition(value)
+         + DisplayValue()
+         - EqualsCore()
+      }
+
+      class Temperature{
+         + string UnitName
+         + int DecimalPoint
+         --
+         + Temperature(value)
+         + string DisplayValue
+         + string DisplayValueWithUnit
+         + string DisplayValueWithUnitSpace
+         - bool EqualsCore(other)         
+      }
+
+      class ValueObject<T> {
+         + override bool Equals(object obj)
+         + static bool operator
+         - abstract bool EqualsCore(T other)
+         + override string ToString()
+         + override int GetHashCode()
+      }
+   }
+}
+
+' Infrastructure
+package DDD.Infrastructure <<Frame>>{
+
+}
+
+' WinForm
+package DDD.WinForm <<Frame>> {
+   package Data <<Rectangle>> {
+      class WetherSQLite{
+
+      }
+   }
+   package Views <<Rectangle>> {
+      class WeatherLatestView{
+
+      }
+   }
+   package ViewsModel <<Rectangle>> {
+      class WeathrLatestViewModel{
+         + string AreaIdText
+         + string DataDateText 
+         + string ConditionText 
+         + string TemperatureText
+         --
+         + Serch()
+      }
+      class Program{
+         + Main()
+      }
+
+   }
+
+   /'note top 
+      Factoryのクライアントクラス
+      SimplePizaaFactoryを通してインスタンスを取得する 
+   end note
+   '/
+}
+
+'----------------------------------------------
+'リレーション
+'----------------------------------------------
+'Main -> PizzaStores:ff
+'PizzaStores -> SimplePizzaFactory
+'SimplePizzaFactory --> IPizza
+'IPizza <|.. CheesePizza
+'IPizza <|.. TomatoPizza
+
+
+
+@enduml
