@@ -1,0 +1,9 @@
+D:\Document\Github\UdemyProject\30.CSProject\11.テスト駆動\TDD\TDD.UI\bin\Debug\TDD.UI.exe.config
+D:\Document\Github\UdemyProject\30.CSProject\11.テスト駆動\TDD\TDD.UI\bin\Debug\TDD.UI.exe
+D:\Document\Github\UdemyProject\30.CSProject\11.テスト駆動\TDD\TDD.UI\bin\Debug\TDD.UI.pdb
+D:\Document\Github\UdemyProject\30.CSProject\11.テスト駆動\TDD\TDD.UI\obj\Debug\TDD.UI.csprojAssemblyReference.cache
+D:\Document\Github\UdemyProject\30.CSProject\11.テスト駆動\TDD\TDD.UI\obj\Debug\TDD.UI.Properties.Resources.resources
+D:\Document\Github\UdemyProject\30.CSProject\11.テスト駆動\TDD\TDD.UI\obj\Debug\TDD.UI.csproj.GenerateResource.cache
+D:\Document\Github\UdemyProject\30.CSProject\11.テスト駆動\TDD\TDD.UI\obj\Debug\TDD.UI.exe
+D:\Document\Github\UdemyProject\30.CSProject\11.テスト駆動\TDD\TDD.UI\obj\Debug\TDD.UI.pdb
+D:\Document\Github\UdemyProject\30.CSProject\11.テスト駆動\TDD\TDD.UI\obj\Debug\TDD.UI.Form1View.resources
