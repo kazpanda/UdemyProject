@@ -1,0 +1,5 @@
+D:\Document\Github\UdemyProject\30.CSProject\11.テスト駆動\ClassLibrary2\ClassLibrary2\bin\Debug\ClassLibrary2.dll
+D:\Document\Github\UdemyProject\30.CSProject\11.テスト駆動\ClassLibrary2\ClassLibrary2\bin\Debug\ClassLibrary2.pdb
+D:\Document\Github\UdemyProject\30.CSProject\11.テスト駆動\ClassLibrary2\ClassLibrary2\obj\Debug\ClassLibrary2.csprojAssemblyReference.cache
+D:\Document\Github\UdemyProject\30.CSProject\11.テスト駆動\ClassLibrary2\ClassLibrary2\obj\Debug\ClassLibrary2.dll
+D:\Document\Github\UdemyProject\30.CSProject\11.テスト駆動\ClassLibrary2\ClassLibrary2\obj\Debug\ClassLibrary2.pdb
