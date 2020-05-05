@@ -4,3 +4,8 @@ D:\Document\Github\DDDProject\DDD\DDD.Domain\obj\Debug\DDD.Domain.csprojAssembly
 D:\Document\Github\DDDProject\DDD\DDD.Domain\obj\Debug\DDD.Domain.csproj.CoreCompileInputs.cache
 D:\Document\Github\DDDProject\DDD\DDD.Domain\obj\Debug\DDD.Domain.dll
 D:\Document\Github\DDDProject\DDD\DDD.Domain\obj\Debug\DDD.Domain.pdb
+D:\Document\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.Domain\bin\Debug\DDD.Domain.dll
+D:\Document\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.Domain\bin\Debug\DDD.Domain.pdb
+D:\Document\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.Domain\obj\Debug\DDD.Domain.dll
+D:\Document\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.Domain\obj\Debug\DDD.Domain.pdb
+D:\Document\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.Domain\obj\Debug\DDD.Domain.csprojAssemblyReference.cache

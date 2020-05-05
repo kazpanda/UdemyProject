@@ -6,25 +6,32 @@ namespace DDD.WinForm.ViewsModel {
 
     public class WeathrLatestViewModel : ViewModelBase {
 
+        // インターフェイス変数（Newしない）
         private IWeatherRepository _weather;
 
         // 2つのコンストラクター
 
         /// <summary>
-        /// 本番時に呼ばれる
+        /// コンストラクター(引数なし)
+        /// 引数無しは本番時に呼ばれる
         /// </summary>
         public WeathrLatestViewModel()
            : this(new WetherSQLite()) {
         }
 
         /// <summary>
-        /// 評価時にモックを指定して呼ばれる
+        /// コンストラクター（引数あり）
+        /// 呼び出し時に引数で指定し呼ばれる
+        /// 評価と本番の切替ができる
         /// </summary>
         /// <param name="weather"></param>
         public WeathrLatestViewModel(IWeatherRepository weather) {
             _weather = weather;
         }
 
+        /// <summary>
+        /// プロパティー
+        /// </summary>
         private string _areaIdText = string.Empty;
         public string AreaIdText {
             get { return _areaIdText; }
@@ -50,21 +57,23 @@ namespace DDD.WinForm.ViewsModel {
         }
 
 
+        /// <summary>
+        /// メソッド（検索処理）
+        /// テストコードから呼ばれたときはSQLに接続したくない
+        /// テストコードと本番環境の切り分けができるようにインターフェイスを通じて呼ぶ
+        /// </summary>
         public void Search() {
 
+            // コンストラクターで指定した_weatherに対してメソッドを実行
+            // 本番もしくはテスト（インターフェイス）に対して行う
             var entity = _weather.GetLatest(Convert.ToInt32(AreaIdText));
 
+            // データ取得後の処理
+            // メソッドはValueObjectにすることで、ViewModelにはメソッドはなくなる
+            // ViewModelではValueObjectを表示するだけ
             if (entity != null) {
-
                 DataDateText = entity.DataDate.ToString();
-
-                //ConditionText = entity.Condition.ToString();
                 ConditionText = entity.Condition.DisplayValue;
-
-                //TemperatureText =
-                //    CommonFunc.RoundString(entity.Temperature,
-                //    Temperature.DecimalPoint) +" " 
-                //    + Temperature.UnitName;
                 TemperatureText = entity.Temperature.DisplayValueWithUnitSpace;
             }
         }

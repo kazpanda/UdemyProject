@@ -3,10 +3,20 @@ using DDD.Domain.ValueObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DDDTest.Tests {
+
+    /// <summary>
+    /// TemperatureTest
+    /// </summary>
     [TestClass]
     public class TemperatureTest {
+
+        /// <summary>
+        /// テスト名は日本語でOK（呼ばれることがない）
+        /// </summary>
         [TestMethod]
         public void 小数点以下2桁で丸めて表示する() {
+
+            // 完全コンストラクターからnewする
             var t = new Temperature(12.3f);
             Assert.AreEqual(12.3f, t.Value);
             Assert.AreEqual("12.30", t.DisplayValue);

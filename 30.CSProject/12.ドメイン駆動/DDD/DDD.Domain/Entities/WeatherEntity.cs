@@ -1,11 +1,24 @@
 ﻿using DDD.Domain.ValueObjects;
 using System;
 
-namespace DDD.Domain.Entities
-{
-    public sealed class WeatherEntity
-    {
-        // 完全コンストラクタパターン
+namespace DDD.Domain.Entities {
+
+    /// <summary>
+    /// Wetherテーブルのエンティティ
+    /// sealedにしておく。継承できない
+    /// </summary>
+    public sealed class WeatherEntity {
+
+        /// <summary>
+        /// 完全コンストラクタパターン
+        /// 値をコンストラクターで決めてしまう
+        /// クラスが生成された時に値が保証される
+        /// 出来るだけ完全コンストラクターで作るように
+        /// </summary>
+        /// <param name="areaId"></param>
+        /// <param name="dataDate"></param>
+        /// <param name="condition"></param>
+        /// <param name="temperature"></param>               
         public WeatherEntity(int areaId,
                              DateTime dataDate,
                             int condition,
@@ -13,26 +26,46 @@ namespace DDD.Domain.Entities
             AreaId = areaId;
             DataDate = dataDate;
             Condition = new Condition(condition);
-            Temperature =new Temperature(temperature);
+            Temperature = new Temperature(temperature);
         }
 
+
+        /// <summary>
+        /// プロパティー（DBの項目名）
+        /// 完全コンストラクターパターンで値を入れる
+        /// getのみにしているので、解析がしやすい
+        /// setが入っているとどこかで値が変化する 
+        /// C#の型にする
+        /// </summary>
         public int AreaId { get; }
         public DateTime DataDate { get; }
         public Condition Condition { get; }
         public Temperature Temperature { get; }
 
+
+        /// <summary>
+        /// メソッドの実装
+        /// Entitiyにてメソッドを実装することでロジックが集まる
+        /// 仕様が明確になる
+        /// </summary>
+        /// <returns></returns>
         public bool IsMousho() {
-            if (Condition==Condition.Sunny) {
-                if(Temperature.Value > 30) {
+            if (Condition == Condition.Sunny) {
+                if (Temperature.Value > 30) {
                     return true;
                 }
             }
             return false;
         }
-        
+
+
+        /// <summary>
+        /// メソッドの実装
+        /// </summary>
+        /// <returns></returns>
         public bool IsOK() {
-            if(DataDate < DateTime.Now.AddMonths(-1)) {
-                if(Temperature.Value < 10) {
+            if (DataDate < DateTime.Now.AddMonths(-1)) {
+                if (Temperature.Value < 10) {
                     return false;
                 }
 
