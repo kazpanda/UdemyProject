@@ -6,6 +6,64 @@
 
 title ドメイン駆動開発 クラス図
 
+' Tests
+package DDDTests.Test<<Frame>>{
+      class TemperatureTest {
+         + 小数点以下2桁で丸めて表示する()
+         + 温度Equals()
+         + 温度EqualsEquals()
+         + 値型Equals()
+      }
+
+      class WeathrLatestViewModelTest {
+         + シナリオ()
+      }
+}
+
+' WinForm
+package DDD.WinForm <<Frame>> {
+   package Views <<Rectangle>> {
+      class WeatherLatestView{
+
+      }
+   }
+
+   package ViewsModel <<Rectangle>> {
+      class WeathrLatestViewModel{
+         + string AreaIdText
+         + string DataDateText 
+         + string ConditionText 
+         + string TemperatureText
+         --
+         + Serch()
+      }
+      note left 
+         コンストラクターにて本番環境と
+         テスト環境を切り替える         
+      end note
+
+   }
+
+   class Program{
+      + Main()
+   }  
+}
+
+
+' Infrastructure
+package DDD.Infrastructure <<Frame>>{
+  ' SQLite
+   package SQLite <<Rectangle>> {
+      class SQLiteHelper {
+         + string ConnenctionString
+      }
+      class WetherSQLite {
+         --
+         + WeatherEntity GetLatest
+      }
+   }
+}
+
 ' Domain
 package DDD.Domain <<Frame>>{
 
@@ -34,6 +92,9 @@ package DDD.Domain <<Frame>>{
       interface IWeatherRepository{
          + WeatherEntity GetLatest(int areaId)
       }
+      note right 
+         テスト環境Entity         
+      end note
    }
 
    ' ValueObjects
@@ -60,7 +121,7 @@ package DDD.Domain <<Frame>>{
          - bool EqualsCore(other)         
       }
 
-      class ValueObject<T> {
+      class ValueObjectBase<T> {
          + override bool Equals(object obj)
          + static bool operator
          - abstract bool EqualsCore(T other)
@@ -70,53 +131,40 @@ package DDD.Domain <<Frame>>{
    }
 }
 
-' Infrastructure
-package DDD.Infrastructure <<Frame>>{
-
-}
-
-' WinForm
-package DDD.WinForm <<Frame>> {
-   package Data <<Rectangle>> {
-      class WetherSQLite{
-
-      }
+package DB{
+   database SQLiteDB{
    }
-   package Views <<Rectangle>> {
-      class WeatherLatestView{
-
-      }
-   }
-   package ViewsModel <<Rectangle>> {
-      class WeathrLatestViewModel{
-         + string AreaIdText
-         + string DataDateText 
-         + string ConditionText 
-         + string TemperatureText
-         --
-         + Serch()
-      }
-      class Program{
-         + Main()
-      }
-
-   }
-
-   /'note top 
-      Factoryのクライアントクラス
-      SimplePizaaFactoryを通してインスタンスを取得する 
-   end note
-   '/
 }
 
 '----------------------------------------------
 'リレーション
 '----------------------------------------------
-'Main -> PizzaStores:ff
-'PizzaStores -> SimplePizzaFactory
-'SimplePizzaFactory --> IPizza
-'IPizza <|.. CheesePizza
-'IPizza <|.. TomatoPizza
+'View
+WeatherLatestView <-- WeathrLatestViewModel
+
+' Test
+TemperatureTest <-- WeathrLatestViewModel
+WeathrLatestViewModelTest <-- WeathrLatestViewModel
+
+'ViewModel
+WeathrLatestViewModel <-- Temperature
+WeathrLatestViewModel <-- IWeatherRepository
+WeathrLatestViewModel <-- Condition
+
+'ValueObject
+IWeatherRepository <-- WeatherEntity
+Temperature <-- WeatherEntity
+Temperature <-- ValueObjectBase
+Temperature <--- FloatHelper
+
+Condition <-- WeatherEntity
+Condition <-- ValueObjectBase
+WeatherEntity <- WetherSQLite
+
+'SQLite
+WetherSQLite <- SQLiteHelper 
+SQLiteHelper <..> SQLiteDB
+
 
 
 

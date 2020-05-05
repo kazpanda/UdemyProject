@@ -17,6 +17,8 @@ namespace DDD.Domain.ValueObjects {
         public Temperature(float value) {
             Value = value;
         }
+
+        // 値を公開
         // 変更できるのはコンストラクタのみ
         public float Value { get; }
 
@@ -26,7 +28,7 @@ namespace DDD.Domain.ValueObjects {
         /// </summary>
         public string DisplayValue {
             get {
-                // 何でValue.RoundStringが出来るの?拡張メソッド?
+                // FloatHelperの拡張メソッドの書き方
                 return Value.RoundString(DecimalPoint);
                 // return FloatHelper.RoundString(Value, DecimalPoint);
             }
@@ -37,6 +39,7 @@ namespace DDD.Domain.ValueObjects {
         /// </summary>
         public string DisplayValueWithUnit {
             get {
+                // FloatHelperの拡張メソッドの書き方
                 return Value.RoundString(DecimalPoint) + UnitName;
                 //return FloatHelper.RoundString(Value, DecimalPoint) + UnitName;
             }
@@ -47,13 +50,14 @@ namespace DDD.Domain.ValueObjects {
         /// </summary>
         public string DisplayValueWithUnitSpace {
             get {
+                // FloatHelperの拡張メソッドの書き方
                 return Value.RoundString(DecimalPoint) + " " + UnitName;
                 //return FloatHelper.RoundString(Value, DecimalPoint) + " " + UnitName;
             }
         }
 
         /// <summary>
-        /// メソッド
+        /// 抽象クラス
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>

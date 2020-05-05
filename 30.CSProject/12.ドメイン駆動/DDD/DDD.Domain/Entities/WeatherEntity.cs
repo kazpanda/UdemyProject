@@ -25,6 +25,9 @@ namespace DDD.Domain.Entities {
                              float temperature) {
             AreaId = areaId;
             DataDate = dataDate;
+
+            // ValueObjectを指定
+            // newしたことでValueObjectに変換される
             Condition = new Condition(condition);
             Temperature = new Temperature(temperature);
         }

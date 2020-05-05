@@ -1,9 +1,17 @@
 ﻿
 namespace DDD.Domain.ValueObjects {
 
+    /// <summary>
+    /// コンディションクラス
+    /// データベースから変換する処理
+    /// １＝晴れとか
+    /// データに関する事なのでDomain層に実装する
+    /// 区分（ENum）は1か所にまとめる
+    /// </summary>
     public sealed class Condition : ValueObject<Condition> {
         
         /// <summary>
+        /// 列挙体と同じようになる
         /// 不明
         /// </summary>
         public static readonly Condition None = new Condition(0);
@@ -30,9 +38,16 @@ namespace DDD.Domain.ValueObjects {
         public Condition(int value) {
             Value = value;
         }
+
+        /// <summary>
+        /// 外部へ公開
+        /// </summary>        
         public int Value { get; }
 
-        // ビジネスロジック
+        /// <summary>
+        /// ビジネスロジック
+        /// コンストラクターの時の値(this)で判断する
+        /// </summary>
         public string DisplayValue {
             get {
                 if(this == Sunny) {

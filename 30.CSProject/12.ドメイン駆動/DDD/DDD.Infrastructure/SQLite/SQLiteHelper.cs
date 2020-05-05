@@ -1,7 +1,13 @@
 ﻿
 namespace DDD.Infrastructure.SQLite {
+
+    /// <summary>
+    /// SQLit全般で使う機能
+    /// アクセスはinternalで十分
+    /// </summary>
     internal class SQLiteHelper {
 
-        internal const string ConnenctionString = @"Data Source = D:\Document\Github\DDDProject\DDD.db;Version=3;";
+        // 接続文字
+        internal const string ConnenctionString = @"Data Source = DDD.db;Version=3;";
     }
 }

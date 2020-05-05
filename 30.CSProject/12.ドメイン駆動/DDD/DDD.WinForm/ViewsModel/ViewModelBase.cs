@@ -4,12 +4,23 @@ using System.Runtime.CompilerServices;
 
 namespace DDD.WinForm.ViewsModel {
 
+    /// <summary>
+    /// ViewModelとViewをバインドするための基底クラス
+    /// </summary>
     public abstract class ViewModelBase : INotifyPropertyChanged {
 
-        private IWeatherRepository _weather;
-
+        // イベントハンドラ
         public event PropertyChangedEventHandler PropertyChanged;
 
+
+        /// <summary>
+        /// MVVM支援ツールのprismのバインダブルコードを参考に
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="field"></param>
+        /// <param name="value"></param>
+        /// <param name="propertyName"></param>
+        /// <returns></returns>
         protected bool SetProperty<T>(ref T field,
             T value, [CallerMemberName]string propertyName = null) {
             if (Equals(field, value)) {

@@ -64,3 +64,4 @@ D:\Document\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDDTest.T
 D:\Document\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDDTest.Tests\obj\Debug\DDDTest.Tests.csproj.CopyComplete
 D:\Document\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDDTest.Tests\obj\Debug\DDDTest.Tests.dll
 D:\Document\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDDTest.Tests\obj\Debug\DDDTest.Tests.pdb
+D:\Document\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDDTest.Tests\bin\Debug\DDD.db

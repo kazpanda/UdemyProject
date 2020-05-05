@@ -6,6 +6,11 @@ namespace DDD.Domain.Helpers {
 
         /// <summary>
         /// 小数点以下を指定桁数四捨五入します
+        /// staticにしてどこからでも呼べるように
+        /// 拡張メソッドにする
+        /// thisを付けることでValueの拡張にRoundStringになる
+        /// 書き方が日本語の意味に近くなる？インテリセンスが効く
+        /// 無くても良い。可読性がいまいち
         /// </summary>
         /// <param name="value"></param>
         /// <param name="decimalPoint"></param>

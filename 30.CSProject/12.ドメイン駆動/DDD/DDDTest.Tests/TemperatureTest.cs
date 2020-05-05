@@ -29,6 +29,10 @@ namespace DDDTest.Tests {
             Assert.AreEqual(true, t1.Equals(t2));
         }
 
+        /// <summary>
+        /// 参照型のテスト
+        /// クラスは参照型
+        /// </summary>
         [TestMethod]
         public void 温度Equals() {
             
@@ -38,6 +42,9 @@ namespace DDDTest.Tests {
             Assert.AreEqual(true, t1.Equals(t2));
         }
 
+        /// <summary>
+        /// ＝＝と書いた時のテスト
+        /// </summary>
         [TestMethod]
         public void 温度EqualsEquals() {
 
@@ -47,6 +54,10 @@ namespace DDDTest.Tests {
             Assert.AreEqual(true, t1==t2);
         }
 
+        /// <summary>
+        /// 値型のテスト
+        /// 代入する
+        /// </summary>
         [TestMethod]
         public void 値型Equals() {
 
@@ -54,7 +65,7 @@ namespace DDDTest.Tests {
             float t2 = 12.3f;
 
             Assert.AreEqual(true, t1.Equals(t2));
-            Assert.AreEqual(true,t1 == t2);
+            Assert.AreEqual(true, t1 == t2);
         }
     }
 }

@@ -47,3 +47,4 @@ D:\Document\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.WinFo
 D:\Document\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.WinForm\obj\Debug\DDD.WinForm.csproj.CopyComplete
 D:\Document\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.WinForm\obj\Debug\DDD.WinForm.exe
 D:\Document\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.WinForm\obj\Debug\DDD.WinForm.pdb
+D:\Document\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.WinForm\bin\Debug\DDD.db

@@ -35,3 +35,4 @@ D:\Document\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.Infra
 D:\Document\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.Infrastructure\obj\Debug\DDD.Infrastructure.csproj.CopyComplete
 D:\Document\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.Infrastructure\obj\Debug\DDD.Infrastructure.dll
 D:\Document\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.Infrastructure\obj\Debug\DDD.Infrastructure.pdb
+D:\Document\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.Infrastructure\bin\Debug\DDD.db

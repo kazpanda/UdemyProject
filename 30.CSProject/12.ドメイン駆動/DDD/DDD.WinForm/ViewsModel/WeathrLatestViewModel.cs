@@ -14,6 +14,7 @@ namespace DDD.WinForm.ViewsModel {
         /// <summary>
         /// コンストラクター(引数なし)
         /// 引数無しは本番時に呼ばれる
+        /// thisをつけると引数ありのコンストラクターを引数なしで呼ぶ
         /// </summary>
         public WeathrLatestViewModel()
            : this(new WetherSQLite()) {
@@ -26,11 +27,13 @@ namespace DDD.WinForm.ViewsModel {
         /// </summary>
         /// <param name="weather"></param>
         public WeathrLatestViewModel(IWeatherRepository weather) {
+            // 引数ありも引数なしも、どちらからも呼ばれる
             _weather = weather;
         }
 
         /// <summary>
         /// プロパティー
+        /// 基底クラスクラスを使っているので簡素化ができる
         /// </summary>
         private string _areaIdText = string.Empty;
         public string AreaIdText {
