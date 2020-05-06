@@ -41,6 +41,8 @@ namespace DDDTest.Tests {
                 1,
                 22.12f));
 
+            // Moqインスタンスの生成
+            var areasMock = new Mock<IAreasRepository>();
 
             // Moq用のList作成
             var areas = new List<AreaEntity>();
@@ -48,8 +50,6 @@ namespace DDDTest.Tests {
             areas.Add(new AreaEntity(2, "大阪"));
             areas.Add(new AreaEntity(3, "福岡"));
 
-            // Moqインスタンスの生成
-            var areasMock = new Mock<IAreasRepository>();
             // Moqのセットアップ
             areasMock.Setup(x => x.GetData()).Returns(areas);
 

@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 namespace DDD.Domain.ValueObjects {
 
     /// <summary>
@@ -65,6 +67,19 @@ namespace DDD.Domain.ValueObjects {
 
         protected override bool EqualsCore(Condition other) {
             return this.Value == other.Value;
+        }
+
+        /// <summary>
+        /// コンボボックスにしようするためプロパティーを作る
+        /// </summary>
+        /// <returns></returns>
+        public static IList<Condition> ToList() {
+            return new List<Condition> {
+            None,
+            Sunny,
+            Cloudy,
+            Rain,
+            };
         }
     }
 }

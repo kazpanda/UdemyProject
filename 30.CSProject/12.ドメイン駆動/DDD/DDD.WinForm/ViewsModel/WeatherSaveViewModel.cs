@@ -1,21 +1,28 @@
-﻿using DDD.Domain.ValueObjects;
+﻿using DDD.Domain.Entities;
+using DDD.Domain.Repositories;
+using DDD.Domain.ValueObjects;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace DDD.WinForm.ViewsModel {
     public class WeatherSaveViewModel:ViewModelBase {
+
+        private IAreasRepository _areas;
 
         /// <summary>
         /// コンストラクター
         /// 起動した時点で現在値を取得する
         /// </summary>
-        public WeatherSaveViewModel() {
+        public WeatherSaveViewModel(IAreasRepository areas) {
+            _areas = areas;
+           
             DataDateValue = GetDateTime();
             SelectedCondition = Condition.Sunny.Value;
             TemperatureText = string.Empty;
+            // データを取得する
+            foreach (var area in _areas.GetData()) {
+                Areas.Add(new AreaEntity(area.AreaId, area.AreaName));
+            }
         }
 
         public object SelectedAreaId { get; set; }
@@ -23,6 +30,11 @@ namespace DDD.WinForm.ViewsModel {
         public DateTime DataDateValue { get; set; }
         public object SelectedCondition { get; set; }
         public string TemperatureText { get; set; }
+        // コンボボックスの公開プロパティー
+        public BindingList<AreaEntity> Areas { get; set; }
+        = new BindingList<AreaEntity>();
+        public BindingList<Condition> Conditions { get; set; }
+        = new BindingList<Condition>(Condition.ToList());
 
         /// 基底クラスに移動
         /// <summary>
