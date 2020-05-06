@@ -12,6 +12,7 @@ namespace DDD.Infrastructure.SQLite {
     /// </summary>
     public class WetherSQLite : IWeatherRepository {
 
+
         // DataTableは使用せずWethereEntitiyカスタムクラスを返却
         public WeatherEntity GetLatest(int areaId) {
             string sql = @"select DataDate,
@@ -34,6 +35,43 @@ namespace DDD.Infrastructure.SQLite {
                             Convert.ToSingle(reader["Temperature"]));
                 },
                 null);
+        }
+
+        public IReadOnlyList<WeatherEntity> GetData() {
+           
+            string sql = @"select A.AreaId,
+	                   ifnull(B.AreaName,'') as AreaName,
+	                   A.DataDate,
+	                   A.Condition,
+	                   A.Temperature
+                       from Weather A
+                       left outer join Areas B
+                       on A.AreaId = B.AreaId";
+
+            return SQLiteHelper.Query(sql,
+                //reader => {
+                //    return new WeatherEntity(
+                //        Convert.ToInt32(reader["AreaId"]),
+                //        Convert.ToString(reader["AreaName"]),
+                //        Convert.ToDateTime(reader["DataDate"]),
+                //        Convert.ToInt32(reader["Condition"]),
+                //        Convert.ToInt32(reader["Temperature"]));
+                //});
+                CreateEntity);
+        }
+
+        /// <summary>
+        /// Entity生成メソッド
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
+        private WeatherEntity CreateEntity(SQLiteDataReader reader) {
+            return new WeatherEntity(
+                        Convert.ToInt32(reader["AreaId"]),
+                        Convert.ToString(reader["AreaName"]),
+                        Convert.ToDateTime(reader["DataDate"]),
+                        Convert.ToInt32(reader["Condition"]),
+                        Convert.ToInt32(reader["Temperature"]));
         }
     }
 }

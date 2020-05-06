@@ -1,4 +1,5 @@
 ﻿using DDD.Domain.Entities;
+using DDD.WinForm.Views;
 using DDD.WinForm.ViewsModel;
 using System;
 using System.Windows.Forms;
@@ -53,6 +54,16 @@ namespace DDD.WinForm {
             _viewModel.Search();
         }
 
-       
+
+        /// <summary>
+        /// ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ListButton_Click(object sender, EventArgs e) {
+            using ( var f = new WeatherListView()) {
+                f.ShowDialog();
+            }
+        }
     }
 }

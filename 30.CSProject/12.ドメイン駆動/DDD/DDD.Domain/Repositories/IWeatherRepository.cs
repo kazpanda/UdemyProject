@@ -1,4 +1,5 @@
 ﻿using DDD.Domain.Entities;
+using System.Collections.Generic;
 
 namespace DDD.Domain.Repositories {
 
@@ -16,5 +17,7 @@ namespace DDD.Domain.Repositories {
         /// <param name="areaId"></param>
         /// <returns></returns>
         WeatherEntity GetLatest(int areaId);
+
+        IReadOnlyList<WeatherEntity> GetData();
     }
 }

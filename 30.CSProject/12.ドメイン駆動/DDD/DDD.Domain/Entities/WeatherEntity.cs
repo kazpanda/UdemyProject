@@ -22,8 +22,36 @@ namespace DDD.Domain.Entities {
         public WeatherEntity(int areaId,
                              DateTime dataDate,
                             int condition,
+                             float temperature) 
+            :this(areaId,string.Empty,dataDate,condition,temperature)
+            {
+            // :this～ 引数（areaName）を追加したコンストラクターをオーバーライドしている
+            
+            
+            //AreaId = areaId;
+            //DataDate = dataDate;
+
+            //// ValueObjectを指定
+            //// newしたことでValueObjectに変換される
+            //Condition = new Condition(condition);
+            //Temperature = new Temperature(temperature);
+        }
+
+        /// <summary>
+        /// 完全コンストラクター
+        /// AreaNameを追加した
+        /// </summary>
+        /// <param name="areaId"></param>
+        /// <param name="dataDate"></param>
+        /// <param name="condition"></param>
+        /// <param name="temperature"></param>               
+        public WeatherEntity(int areaId,
+                             string areaName,
+                             DateTime dataDate,
+                            int condition,
                              float temperature) {
-            AreaId = areaId;
+            AreaId = new AreaId(areaId);
+            AreaName = areaName;
             DataDate = dataDate;
 
             // ValueObjectを指定
@@ -32,15 +60,17 @@ namespace DDD.Domain.Entities {
             Temperature = new Temperature(temperature);
         }
 
-
         /// <summary>
         /// プロパティー（DBの項目名）
         /// 完全コンストラクターパターンで値を入れる
         /// getのみにしているので、解析がしやすい
         /// setが入っているとどこかで値が変化する 
         /// C#の型にする
+        /// ★ValueObjectを入れる（ロジックは持たせない）
         /// </summary>
-        public int AreaId { get; }
+        public AreaId AreaId { get; }
+        // AreaNameは同じテーブルには無い
+        public string AreaName { get; }
         public DateTime DataDate { get; }
         public Condition Condition { get; }
         public Temperature Temperature { get; }

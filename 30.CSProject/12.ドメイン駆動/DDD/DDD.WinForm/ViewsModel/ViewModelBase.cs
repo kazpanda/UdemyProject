@@ -1,4 +1,5 @@
 ﻿using DDD.Domain.Repositories;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -33,6 +34,14 @@ namespace DDD.WinForm.ViewsModel {
 
             }
             return true;
+        }
+
+        /// <summary>
+        /// メソッドにすることで上書きできる
+        /// </summary>
+        /// <returns></returns>
+        public virtual DateTime GetDateTime() {
+            return DateTime.Now;
         }
 
     }
