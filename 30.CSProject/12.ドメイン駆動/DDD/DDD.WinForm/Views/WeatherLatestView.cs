@@ -1,4 +1,5 @@
-﻿using DDD.WinForm.ViewsModel;
+﻿using DDD.Domain.Entities;
+using DDD.WinForm.ViewsModel;
 using System;
 using System.Windows.Forms;
 
@@ -23,15 +24,19 @@ namespace DDD.WinForm {
 
             // データバインディング(ViewModelとのバインディング)
             // nameofが使えない場合は、文字列で指定可能("AreaIdText")
-            this.AreaIdTextBox.DataBindings.Add(
-                "Text",_viewModel,nameof(_viewModel.AreaIdText));
-
+            // DoropBox
+            this.AreasComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.AreasComboBox.DataBindings.Add(
+                "SelectedValue",_viewModel,nameof(_viewModel.SelectedAreaId));
+            this.AreasComboBox.DataBindings.Add(
+                "DataSource", _viewModel, nameof(_viewModel.Areas));
+            this.AreasComboBox.ValueMember = nameof(AreaEntity.AreaId);
+            this.AreasComboBox.DisplayMember = nameof(AreaEntity.AreaName);
+            // Label    
             this.DataDateLabel.DataBindings.Add(
                 "Text", _viewModel, nameof(_viewModel.DataDateText));
-
             this.ConditionLabel.DataBindings.Add(
                 "Text", _viewModel, nameof(_viewModel.ConditionText));
-
             this.TemperatureLabel.DataBindings.Add(
                 "Text", _viewModel, nameof(_viewModel.TemperatureText));
         }
