@@ -44,6 +44,7 @@ namespace DDD.WinForm.ViewsModel {
             = new BindingList<AreaEntity>();
         public BindingList<Condition> Conditions { get; set; }
             = new BindingList<Condition>(Condition.ToList());
+        public string TemperatureUnitName => Temperature.UnitName;
 
 
         /// <summary>

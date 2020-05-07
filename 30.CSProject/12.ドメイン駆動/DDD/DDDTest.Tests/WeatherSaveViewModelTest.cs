@@ -47,6 +47,7 @@ namespace DDDTest.Tests {
             viewModel.DataDateValue.Is(Convert.ToDateTime("2020/05/06 22:00:00"));
             viewModel.SelectedCondition.Is(1);
             viewModel.TemperatureText.Is("");
+            viewModel.TemperatureUnitName.Is("℃");
 
             // コンボボックスのテスト
             viewModel.Areas.Count.Is(2);

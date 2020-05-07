@@ -20,7 +20,7 @@ namespace DDD.WinForm.ViewsModel {
         /// thisをつけると引数ありのコンストラクターを引数なしで呼ぶ
         /// </summary>
         public WeathrLatestViewModel()
-           : this(new WetherSQLite(), new AreasSQLite()) {
+           : this(new WeatherSQLite(), new AreasSQLite()) {
         }
 
         /// <summary>

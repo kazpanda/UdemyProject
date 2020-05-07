@@ -10,7 +10,7 @@ namespace DDD.Infrastructure.SQLite {
     /// SQLiteへのアクセス
     /// インターフェイスを継承
     /// </summary>
-    public class WetherSQLite : IWeatherRepository {
+    public class WeatherSQLite : IWeatherRepository {
 
 
         // DataTableは使用せずWethereEntitiyカスタムクラスを返却

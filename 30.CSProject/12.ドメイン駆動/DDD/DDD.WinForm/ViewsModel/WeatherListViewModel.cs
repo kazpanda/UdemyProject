@@ -13,7 +13,7 @@ namespace DDD.WinForm.ViewsModel {
         /// SQLiteに接続
         /// </summary>
         public WeatherListViewModel() 
-            :this(new WetherSQLite()){
+            :this(new WeatherSQLite()){
         }
 
 

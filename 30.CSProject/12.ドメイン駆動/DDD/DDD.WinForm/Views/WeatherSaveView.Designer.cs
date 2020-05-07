@@ -124,7 +124,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(450, 254);
+            this.ClientSize = new System.Drawing.Size(324, 220);
             this.Controls.Add(this.DateTimeTextBox);
             this.Controls.Add(this.TemperatureTextBox);
             this.Controls.Add(this.ConditionComboBox);
