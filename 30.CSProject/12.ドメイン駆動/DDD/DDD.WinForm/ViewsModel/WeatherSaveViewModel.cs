@@ -1,4 +1,5 @@
 ﻿using DDD.Domain.Entities;
+using DDD.Domain.Exceptions;
 using DDD.Domain.Helpers;
 using DDD.Domain.Repositories;
 using DDD.Domain.ValueObjects;
@@ -10,13 +11,18 @@ namespace DDD.WinForm.ViewsModel {
 
     public class WeatherSaveViewModel:ViewModelBase {
 
+        private IWeatherRepository _weathr;
         private IAreasRepository _areas;
 
         /// <summary>
         /// コンストラクター
         /// 起動した時点で現在値を取得する
         /// </summary>
-        public WeatherSaveViewModel(IAreasRepository areas) {
+        public WeatherSaveViewModel(
+            IWeatherRepository weathr,
+            IAreasRepository areas) {
+
+            _weathr = weathr;
             _areas = areas;
            
             DataDateValue = GetDateTime();
@@ -45,9 +51,23 @@ namespace DDD.WinForm.ViewsModel {
         /// </summary>
         public void Save() {
 
-            if(SelectedAreaId == null) {
-                Guard.IsNull(SelectedAreaId,"エリアを指定してください");
-            }            
+            // コンボボックス入力チェック
+            Guard.IsNull(SelectedAreaId,"エリアを指定してください");
+            
+            // テキストボックス入力チェック
+            float temperature = Guard.IsFloat(TemperatureText, "温度の入力に誤りがある");
+
+            // 保存するEntityを作成する
+            var entity = new WeatherEntity(
+                Convert.ToInt32(SelectedAreaId),
+                DataDateValue,
+                Convert.ToInt32(SelectedCondition),
+                temperature
+                );
+
+            // DBへ保存する
+            _weathr.Save(entity);
+
         }
 
         /// 基底クラスに移動

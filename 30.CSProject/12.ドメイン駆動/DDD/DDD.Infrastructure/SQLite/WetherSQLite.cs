@@ -73,5 +73,9 @@ namespace DDD.Infrastructure.SQLite {
                         Convert.ToInt32(reader["Condition"]),
                         Convert.ToInt32(reader["Temperature"]));
         }
+
+        public void Save(WeatherEntity weather) {
+            throw new NotImplementedException();
+        }
     }
 }

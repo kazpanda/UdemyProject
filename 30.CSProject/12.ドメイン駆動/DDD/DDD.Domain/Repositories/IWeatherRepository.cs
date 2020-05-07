@@ -18,6 +18,16 @@ namespace DDD.Domain.Repositories {
         /// <returns></returns>
         WeatherEntity GetLatest(int areaId);
 
+        /// <summary>
+        /// データ取得
+        /// </summary>
+        /// <returns></returns>
         IReadOnlyList<WeatherEntity> GetData();
+
+        /// <summary>
+        /// 保存
+        /// </summary>
+        /// <param name="weather"></param>
+        void Save(WeatherEntity weather);
     }
 }

@@ -13,6 +13,9 @@ namespace DDDTest.Tests {
         [TestMethod]
         public void 天気登録シナリオ() {
 
+            // WeatherMock用Moqインスタンス
+            var weatherMock = new Mock<IWeatherRepository>();
+
             // Moqインスタンスの生成
             var areasMock = new Mock<IAreasRepository>();
 
@@ -32,7 +35,7 @@ namespace DDDTest.Tests {
             // Returnsで"2020/05/06 22:00:00"を返却する
             // 受けをvirtualにすることでオーバライドでき上書きができる
             // これまではインターフェイスを使用した
-            var viewModelMock = new Mock<WeatherSaveViewModel>(areasMock.Object);
+            var viewModelMock = new Mock<WeatherSaveViewModel>(weatherMock.Object,areasMock.Object);
             viewModelMock.Setup(x => x.GetDateTime()).Returns(
                 Convert.ToDateTime("2020/05/06 22:00:00"));
 
@@ -53,6 +56,30 @@ namespace DDDTest.Tests {
             //viewModel.Save();
             var ex=AssertEx.Throws<InputException>(() => viewModel.Save());
             ex.Message.Is("エリアを指定してください");
+
+            // 入力値のチェック
+            viewModel.SelectedAreaId = 2;
+            ex = AssertEx.Throws<InputException>(() => viewModel.Save());
+            ex.Message.Is("温度の入力に誤りがある");
+
+            viewModel.TemperatureText = "12.345";
+            // 保存するためにはWethereEntitiyにアクセス必要（weatherMock生成）
+
+            // Entityのチェックを行う
+            weatherMock.Setup(x => x.Save(It.IsAny<WeatherEntity>())).
+                Callback<WeatherEntity>(saveValue => {
+                    saveValue.AreaId.Value.Is(2);
+                    saveValue.DataDate.Is(
+                        Convert.ToDateTime("2020/05/06 22:00:00"));
+                    saveValue.Condition.Value.Is(1);
+                    saveValue.Temperature.Value.Is(12.345f);
+                });
+
+            viewModel.Save();
+            // Saveのテスト漏れを防ぐ
+            // Saveメソッドの実装がされていなかった場合は、Entityのチェックが走らないので
+            weatherMock.VerifyAll();
+
 
 
         }
