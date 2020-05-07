@@ -1,10 +1,13 @@
 ﻿using DDD.Domain.Entities;
+using DDD.Domain.Helpers;
 using DDD.Domain.Repositories;
 using DDD.Domain.ValueObjects;
 using System;
 using System.ComponentModel;
 
 namespace DDD.WinForm.ViewsModel {
+
+
     public class WeatherSaveViewModel:ViewModelBase {
 
         private IAreasRepository _areas;
@@ -32,9 +35,20 @@ namespace DDD.WinForm.ViewsModel {
         public string TemperatureText { get; set; }
         // コンボボックスの公開プロパティー
         public BindingList<AreaEntity> Areas { get; set; }
-        = new BindingList<AreaEntity>();
+            = new BindingList<AreaEntity>();
         public BindingList<Condition> Conditions { get; set; }
-        = new BindingList<Condition>(Condition.ToList());
+            = new BindingList<Condition>(Condition.ToList());
+
+
+        /// <summary>
+        /// ボタン処理
+        /// </summary>
+        public void Save() {
+
+            if(SelectedAreaId == null) {
+                Guard.IsNull(SelectedAreaId,"エリアを指定してください");
+            }            
+        }
 
         /// 基底クラスに移動
         /// <summary>

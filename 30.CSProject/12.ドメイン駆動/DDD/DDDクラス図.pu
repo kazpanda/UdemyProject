@@ -6,69 +6,20 @@
 
 title ドメイン駆動開発 クラス図
 
-' Tests
-package DDDTests.Test<<Frame>>{
-      class TemperatureTest {
-         + 小数点以下2桁で丸めて表示する()
-         + 温度Equals()
-         + 温度EqualsEquals()
-         + 値型Equals()
-      }
-
-      class WeathrLatestViewModelTest {
-         + シナリオ()
-      }
-}
-
-' WinForm
-package DDD.WinForm <<Frame>> {
-   package Views <<Rectangle>> {
-      class WeatherLatestView{
-
-      }
-   }
-
-   package ViewsModel <<Rectangle>> {
-      class WeathrLatestViewModel{
-         + string AreaIdText
-         + string DataDateText 
-         + string ConditionText 
-         + string TemperatureText
-         --
-         + Serch()
-      }
-      note left 
-         コンストラクターにて本番環境と
-         テスト環境を切り替える         
-      end note
-
-   }
-
-   class Program{
-      + Main()
-   }  
-}
-
-
-' Infrastructure
-package DDD.Infrastructure <<Frame>>{
-  ' SQLite
-   package SQLite <<Rectangle>> {
-      class SQLiteHelper {
-         + string ConnenctionString
-      }
-      class WetherSQLite {
-         --
-         + WeatherEntity GetLatest
-      }
-   }
-}
-
+' --------------------------------------------
 ' Domain
+' --------------------------------------------
 package DDD.Domain <<Frame>>{
 
    ' Entitiy
    package Entity <<Rectangle>> {
+
+      class AreaEntity {
+         + int AreaId
+         + string AreaName
+         --
+      }
+
       class WeatherEntity {
          + int AreaId
          + Datetime DataDate
@@ -80,45 +31,71 @@ package DDD.Domain <<Frame>>{
       }
    }
 
+   ' Exceptions
+   package Entity <<Rectangle>> {
+      class InputException {
+      }
+   }
+
    ' Helpers
    package Helpers <<Rectangle>> {
       class FloatHelper{
          + RoundString(value,decimalPoint)
       }
+      class Guard{
+      --
+         + IsNull()
+      }
    }
 
    ' Repositories
    package Repositories <<Rectangle>> {
-      interface IWeatherRepository{
-         + WeatherEntity GetLatest(int areaId)
+      interface IAreasRepository{
+      --
+         + AreaEntity GetData()
       }
-      note right 
-         テスト環境Entity         
+
+      interface IWeatherRepository{
+      --
+         + WeatherEntity GetLatest(int areaId)
+         + WeatherEntity GetLatest()
+      }
+      note right
+         テスト環境Entity
       end note
    }
 
    ' ValueObjects
    package ValueObjects <<Rectangle>> {
+      class AreaId{
+         + int Value
+         --
+         + EqualsCore(other)
+         + DisplayValue()
+      }
+
       class Condition{
          + Condition None
          + Condition Sunny
          + Condition Cloudy
          + Condition Rain
+         + Condition Value
          --
          + Condition(value)
-         + DisplayValue()
-         - EqualsCore()
+         + string DisplayValue()
+         + Condition ToList()
+         - bool EqualsCore(other)
       }
 
       class Temperature{
          + string UnitName
          + int DecimalPoint
+         + float Value
          --
-         + Temperature(value)
          + string DisplayValue
          + string DisplayValueWithUnit
          + string DisplayValueWithUnitSpace
-         - bool EqualsCore(other)         
+         - bool EqualsCore(other)
       }
 
       class ValueObjectBase<T> {
@@ -131,6 +108,132 @@ package DDD.Domain <<Frame>>{
    }
 }
 
+' --------------------------------------------
+' Infrastructure
+' --------------------------------------------
+package DDD.Infrastructure <<Frame>>{
+  ' SQLite
+   package SQLite <<Rectangle>> {
+      class AreasSQLite {
+         + string ConnenctionString
+         --
+         + AreaEntity GetData()
+         - AreaEntity CreateEntity(reader)
+      }
+      class WetherSQLite {
+         --
+         + WeatherEntity GetLatest()
+         - WeatherEntity CreateEntity(reader)
+      }
+       class SQLiteHelper {
+         + string ConnenctionString
+         --
+         + T Query(sql,parameters,createEntity)
+         + T QuerySingle(sql,parameters,createEntity)
+      }
+   }
+}
+
+' --------------------------------------------
+' WinForm
+' --------------------------------------------
+package DDD.WinForm <<Frame>> {
+   package Views <<Rectangle>> {
+      class WeatherLatestView{
+         --
+         - void LatestButton_Click()
+         - void ListButton_Click()
+      }
+
+      class WeatherListView{
+
+      }
+   }
+
+   package ViewsModel <<Rectangle>> {
+
+      class ViewModelBase{
+         + EventHandler PropertyChanged
+         --
+         + bool SetProperty()
+         + DateTime GetDateTime()
+      }
+
+      class WeatherListViewModel{
+         --
+         + BindingList Weathers()
+      }
+
+      class WeatherListViewModelWeather{
+         + string AreaId
+         + string AreaName
+         + string DataDateText
+         + string ConditionText
+         + string TemperatureText
+      }
+
+      class WeatherSaveViewModel{
+         + object SelectedAreaId
+         + string DataDateText
+         + object SelectedCondition
+         + string TemperatureText
+         + Condition Conditions
+         + AreaEntity Areas
+         --
+         + void Save()
+      }
+
+      class WeathrLatestViewModel{
+         + string AreaIdText
+         + string DataDateText
+         + string ConditionText
+         + string TemperatureText
+         + AreaEntity Areas
+         --
+         + void Serch()
+      }
+
+      note left
+         コンストラクターにて本番環境と
+         テスト環境を切り替える
+      end note
+
+
+   }
+
+   class Program{
+      + Main()
+   }
+}
+
+' --------------------------------------------
+' Tests
+' --------------------------------------------
+package DDDTests.Test<<Frame>>{
+      class TemperatureTest {
+         + 小数点以下2桁で丸めて表示する()
+         + 温度Equals()
+         + 温度EqualsEquals()
+         + 値型Equals()
+      }
+
+      class WeatherListViewModelTest {
+         + 天気一覧画面シナリオ()
+      }
+      class WeatherSaveViewModelTest {
+         + 天気登録シナリオ()
+      }
+      class WeathrLatestViewModelTest {
+         + シナリオ()
+      }
+      class WeathrLatestViewModelTest {
+         + シナリオ1()
+      }
+}
+
+' --------------------------------------------
+' データベース
+' --------------------------------------------
 package DB{
    database SQLiteDB{
    }
@@ -162,7 +265,7 @@ Condition <-- ValueObjectBase
 WeatherEntity <- WetherSQLite
 
 'SQLite
-WetherSQLite <- SQLiteHelper 
+WetherSQLite <- SQLiteHelper
 SQLiteHelper <..> SQLiteDB
 
 

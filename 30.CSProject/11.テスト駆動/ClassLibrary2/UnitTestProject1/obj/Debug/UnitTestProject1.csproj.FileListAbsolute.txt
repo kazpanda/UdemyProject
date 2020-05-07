@@ -16,3 +16,7 @@ D:\Document\Github\UdemyProject\30.CSProject\11.テスト駆動\ClassLibrary2\Un
 D:\Document\Github\UdemyProject\30.CSProject\11.テスト駆動\ClassLibrary2\UnitTestProject1\obj\Debug\UnitTestProject1.csproj.CopyComplete
 D:\Document\Github\UdemyProject\30.CSProject\11.テスト駆動\ClassLibrary2\UnitTestProject1\obj\Debug\UnitTestProject1.dll
 D:\Document\Github\UdemyProject\30.CSProject\11.テスト駆動\ClassLibrary2\UnitTestProject1\obj\Debug\UnitTestProject1.pdb
+C:\Users\3902454\Documents\20_ﾌﾟﾛｸﾞﾗﾑ\git\Github\UdemyProject\30.CSProject\11.テスト駆動\ClassLibrary2\UnitTestProject1\obj\Debug\UnitTestProject1.dll
+C:\Users\3902454\Documents\20_ﾌﾟﾛｸﾞﾗﾑ\git\Github\UdemyProject\30.CSProject\11.テスト駆動\ClassLibrary2\UnitTestProject1\obj\Debug\UnitTestProject1.pdb
+C:\Users\3902454\Documents\20_ﾌﾟﾛｸﾞﾗﾑ\git\Github\UdemyProject\30.CSProject\11.テスト駆動\ClassLibrary2\UnitTestProject1\obj\Debug\UnitTestProject1.csprojAssemblyReference.cache
+C:\Users\3902454\Documents\20_ﾌﾟﾛｸﾞﾗﾑ\git\Github\UdemyProject\30.CSProject\11.テスト駆動\ClassLibrary2\UnitTestProject1\obj\Debug\UnitTestProject1.csproj.CoreCompileInputs.cache

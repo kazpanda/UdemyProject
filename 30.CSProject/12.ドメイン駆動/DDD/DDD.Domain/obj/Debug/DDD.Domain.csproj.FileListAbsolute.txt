@@ -9,3 +9,9 @@ D:\Document\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.Domai
 D:\Document\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.Domain\obj\Debug\DDD.Domain.dll
 D:\Document\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.Domain\obj\Debug\DDD.Domain.pdb
 D:\Document\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.Domain\obj\Debug\DDD.Domain.csprojAssemblyReference.cache
+C:\Users\3902454\Documents\20_ﾌﾟﾛｸﾞﾗﾑ\git\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.Domain\bin\Debug\DDD.Domain.dll
+C:\Users\3902454\Documents\20_ﾌﾟﾛｸﾞﾗﾑ\git\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.Domain\bin\Debug\DDD.Domain.pdb
+C:\Users\3902454\Documents\20_ﾌﾟﾛｸﾞﾗﾑ\git\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.Domain\obj\Debug\DDD.Domain.csprojAssemblyReference.cache
+C:\Users\3902454\Documents\20_ﾌﾟﾛｸﾞﾗﾑ\git\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.Domain\obj\Debug\DDD.Domain.csproj.CoreCompileInputs.cache
+C:\Users\3902454\Documents\20_ﾌﾟﾛｸﾞﾗﾑ\git\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.Domain\obj\Debug\DDD.Domain.dll
+C:\Users\3902454\Documents\20_ﾌﾟﾛｸﾞﾗﾑ\git\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.Domain\obj\Debug\DDD.Domain.pdb

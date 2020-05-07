@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DDD.Domain.Entities;
+using DDD.Domain.Exceptions;
 using DDD.Domain.Repositories;
 using DDD.WinForm.ViewsModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -47,6 +48,12 @@ namespace DDDTest.Tests {
             // コンボボックスのテスト
             viewModel.Areas.Count.Is(2);
             viewModel.Conditions.Count.Is(4);
+
+            // ボタン処理のテスト
+            //viewModel.Save();
+            var ex=AssertEx.Throws<InputException>(() => viewModel.Save());
+            ex.Message.Is("エリアを指定してください");
+
 
         }
     }
