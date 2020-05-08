@@ -77,3 +77,4 @@ C:\Users\3902454\Documents\20_ﾌﾟﾛｸﾞﾗﾑ\git\Github\UdemyProject\30.C
 C:\Users\3902454\Documents\20_ﾌﾟﾛｸﾞﾗﾑ\git\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.WinForm\obj\Debug\DDD.WinForm.exe
 C:\Users\3902454\Documents\20_ﾌﾟﾛｸﾞﾗﾑ\git\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.WinForm\obj\Debug\DDD.WinForm.pdb
 D:\Document\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.WinForm\obj\Debug\DDD.WinForm.Views.WeatherSaveView.resources
+C:\Users\3902454\Documents\20_ﾌﾟﾛｸﾞﾗﾑ\git\Github\UdemyProject\30.CSProject\12.ドメイン駆動\DDD\DDD.WinForm\obj\Debug\DDD.WinForm.Views.WeatherSaveView.resources

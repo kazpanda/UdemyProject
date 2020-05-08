@@ -2,6 +2,9 @@
 
 namespace DDD.Domain.Helpers {
 
+    /// <summary>
+    /// フロートチェック用クラス
+    /// </summary>
     public static class FloatHelper {
 
         /// <summary>

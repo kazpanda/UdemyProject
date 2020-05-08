@@ -8,8 +8,16 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
 namespace DDDTest.Tests {
+
+    /// <summary>
+    /// 保存画面用テストクラス
+    /// </summary>
     [TestClass]
     public class WeatherSaveViewModelTest {
+
+        /// <summary>
+        /// シナリオ
+        /// </summary>
         [TestMethod]
         public void 天気登録シナリオ() {
 
@@ -80,8 +88,6 @@ namespace DDDTest.Tests {
             // Saveのテスト漏れを防ぐ
             // Saveメソッドの実装がされていなかった場合は、Entityのチェックが走らないので
             weatherMock.VerifyAll();
-
-
 
         }
     }

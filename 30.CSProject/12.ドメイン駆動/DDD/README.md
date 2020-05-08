@@ -1,5 +1,11 @@
 # 12.ドメイン駆動開発
 ドメイン駆動開発
+見通しの良いコード
+Moqを使ったテスト
+Repository
+Entity
+ValueObject
+Formアプリのデータバインド
 
 ## プロジェクト構成
 ### Domain

@@ -100,5 +100,56 @@ namespace DDD.Infrastructure.SQLite {
             }
             return nullEntity;
         }
+
+
+        /// <summary>
+        /// コマンド実行（追加、更新）共通関数
+        /// </summary>
+        /// <param name="insert"></param>
+        /// <param name="update"></param>
+        /// <param name="args"></param>
+        internal static void Execute(
+            string insert,
+            string update,
+            SQLiteParameter[] parameters
+            ) {
+
+            // UpdateとInsert
+            using (var connection = new SQLiteConnection(SQLiteHelper.ConnenctionString))
+            using (var command = new SQLiteCommand(update, connection)) {
+                connection.Open();
+                if (parameters != null) {
+                    command.Parameters.AddRange(parameters);
+                }
+                // 戻り値から件数を取得し件数が無かったらUpdateにする
+                if (command.ExecuteNonQuery() < 1) {
+                    command.CommandText = insert;
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        /// <summary>
+        /// コマンド実行（コマンド）共通関数
+        /// </summary>
+        /// <param name="insert"></param>
+        /// <param name="update"></param>
+        /// <param name="args"></param>
+        internal static void Execute(
+            string sql,
+            SQLiteParameter[] parameters) {
+
+            // SQLコマンドの実行
+            using (var connection = new SQLiteConnection(SQLiteHelper.ConnenctionString))
+            using (var command = new SQLiteCommand(sql, connection)) {
+                connection.Open();
+                if (parameters != null) {
+                    command.Parameters.AddRange(parameters);
+                }
+
+                command.ExecuteNonQuery();
+            }
+        }
+
     }
 }

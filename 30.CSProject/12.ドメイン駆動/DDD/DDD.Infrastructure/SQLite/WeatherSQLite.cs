@@ -74,8 +74,33 @@ namespace DDD.Infrastructure.SQLite {
                         Convert.ToInt32(reader["Temperature"]));
         }
 
+
+        /// <summary>
+        /// 保存処理
+        /// </summary>
+        /// <param name="weather"></param>
         public void Save(WeatherEntity weather) {
-            throw new NotImplementedException();
+            string insert = @"insert into Weather
+                            (AreaId,DataDate,Condition,Temperature)
+                            values
+                            (@AreaId,@DataDate,@Condition,@Temperature)";
+
+            string update = @"update Weather
+                            set Condition = @Condition,
+                            Temperature = @Temperature
+                            where AreaId = @AreaId
+                            and DataDate = @DataDate";
+
+            var args = new List<SQLiteParameter> {
+                new SQLiteParameter("@AreaId",weather.AreaId.Value),
+                new SQLiteParameter("@DataDate",weather.DataDate),
+                new SQLiteParameter("@Condition",weather.Condition.Value),
+                new SQLiteParameter("@Temperature",weather.Temperature.Value),
+
+            };
+
+            // SQLの実行
+            SQLiteHelper.Execute(insert, update, args.ToArray());
         }
     }
 }

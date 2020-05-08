@@ -6,6 +6,9 @@ using System.ComponentModel;
 
 namespace DDD.WinForm.ViewsModel {
 
+    /// <summary>
+    /// WeathrLatestViewModelビューモデル
+    /// </summary>
     public class WeathrLatestViewModel : ViewModelBase {
 
         // インターフェイス変数（Newしない）

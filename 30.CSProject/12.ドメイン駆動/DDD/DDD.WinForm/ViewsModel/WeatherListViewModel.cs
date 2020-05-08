@@ -4,6 +4,9 @@ using System.ComponentModel;
 
 namespace DDD.WinForm.ViewsModel {
 
+    /// <summary>
+    /// WeatherListViewModelモデルクラス
+    /// </summary>
     public class WeatherListViewModel : ViewModelBase {
 
         private IWeatherRepository _weather;
@@ -30,6 +33,9 @@ namespace DDD.WinForm.ViewsModel {
             }
         }
 
+        /// <summary>
+        /// リスト取得のために公開する
+        /// </summary>
         public BindingList<WeatherListViewModelWeather>
             Weathers { get; set; } = new BindingList<WeatherListViewModelWeather>();
     }

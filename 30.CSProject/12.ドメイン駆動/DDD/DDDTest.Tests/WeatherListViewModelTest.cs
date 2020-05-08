@@ -7,8 +7,16 @@ using System;
 using System.Collections.Generic;
 
 namespace DDDTest.Tests {
+
+    /// <summary>
+    /// グリッドビューのテスト
+    /// </summary>
     [TestClass]
     public class WeatherListViewModelTest {
+
+        /// <summary>
+        /// テストシナリオ
+        /// </summary>
         [TestMethod]
         public void 天気一覧画面シナリオ() {
 
@@ -30,8 +38,6 @@ namespace DDDTest.Tests {
                   Convert.ToDateTime("2019/09/10 23:00:56"),
                   1,
                   22.1234f));
-
-
 
 
             // Moqのセットアップ
