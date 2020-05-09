@@ -1,0 +1,104 @@
+@startuml
+
+'##############################################
+' 2020/05/11 吉冨 新規作成
+'##############################################
+
+title ドメイン駆動開発 クラス図
+
+' --------------------------------------------
+' Domain
+' --------------------------------------------
+
+' Exceptions
+package FeederSerial <<Frame>> {
+
+   package View <<Frame>> {
+      'View(Form)
+      class FeederSerialView <<View>>{
+         - string SearchText
+         - string SearcheLabel
+         - void Search()
+      }
+   }
+   
+   package ModelView <<Frame>> {
+      ' ViewModel
+      class FeederSerialViewModel <ビューモデル> <<ViewModel>> {
+         + string SearchText
+         + string SearcheLabel
+         + void Search()
+      }
+   }
+
+   package Model <<Frame>> {
+      ' Model
+      class SerialModel <<Model>>{
+         + string SerialId
+         + string SerialNo
+         + string ModelName
+      }
+      ' インターフェイス
+      interface IFeederSerial <<Interface>>{
+         --
+         + FeederModel GetData()
+         + FeederModel SetData()
+      }
+
+      ' SQL
+      class FeederSerialSQLite {
+         --
+         + FeederModel GetData()
+         + FeederModel SetData()
+      }
+
+   }
+   ' Mock
+   class FeederSerialMock {
+      --
+      + FeederModel GetData()
+      + FeederModel SetData()
+   }
+
+
+
+}
+
+' --------------------------------------------
+' Tests
+' --------------------------------------------
+package Tests.Test <<Frame>>{
+
+   class FeederSerialViewModelTest <<Test>>{
+      + シナリオ()
+   }
+
+
+}
+
+' --------------------------------------------
+' データベース
+' --------------------------------------------
+package DB{
+
+   database SQLiteDB{
+   }
+
+}
+
+'----------------------------------------------
+'リレーション
+'----------------------------------------------
+FeederSerialView <-> FeederSerialViewModel
+FeederSerialViewModelTest --> FeederSerialViewModel
+
+FeederSerialViewModel <- SerialModel
+SerialModel <-- IFeederSerial
+
+
+IFeederSerial <.. FeederSerialSQLite
+IFeederSerial <.. FeederSerialMock
+
+FeederSerialSQLite <-- SQLiteDB
+
+@enduml

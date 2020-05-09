@@ -33,22 +33,22 @@
             // 
             // ATextBox
             // 
-            this.ATextBox.Location = new System.Drawing.Point(22, 36);
+            this.ATextBox.Location = new System.Drawing.Point(7, 12);
             this.ATextBox.Name = "ATextBox";
-            this.ATextBox.Size = new System.Drawing.Size(68, 19);
+            this.ATextBox.Size = new System.Drawing.Size(48, 19);
             this.ATextBox.TabIndex = 0;
             // 
             // BTextBox
             // 
-            this.BTextBox.Location = new System.Drawing.Point(111, 36);
+            this.BTextBox.Location = new System.Drawing.Point(78, 12);
             this.BTextBox.Name = "BTextBox";
-            this.BTextBox.Size = new System.Drawing.Size(68, 19);
+            this.BTextBox.Size = new System.Drawing.Size(48, 19);
             this.BTextBox.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(94, 40);
+            this.label1.Location = new System.Drawing.Point(61, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(11, 12);
             this.label1.TabIndex = 1;
@@ -57,7 +57,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(182, 39);
+            this.label2.Location = new System.Drawing.Point(131, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(11, 12);
             this.label2.TabIndex = 1;
@@ -66,7 +66,7 @@
             // ResultLabel
             // 
             this.ResultLabel.AutoSize = true;
-            this.ResultLabel.Location = new System.Drawing.Point(199, 39);
+            this.ResultLabel.Location = new System.Drawing.Point(150, 15);
             this.ResultLabel.Name = "ResultLabel";
             this.ResultLabel.Size = new System.Drawing.Size(23, 12);
             this.ResultLabel.TabIndex = 1;
@@ -74,26 +74,26 @@
             // 
             // CalculationButton
             // 
-            this.CalculationButton.Location = new System.Drawing.Point(59, 74);
+            this.CalculationButton.Location = new System.Drawing.Point(136, 42);
             this.CalculationButton.Name = "CalculationButton";
-            this.CalculationButton.Size = new System.Drawing.Size(75, 23);
+            this.CalculationButton.Size = new System.Drawing.Size(48, 23);
             this.CalculationButton.TabIndex = 2;
-            this.CalculationButton.Text = "計算";
+            this.CalculationButton.Text = "合計";
             this.CalculationButton.UseVisualStyleBackColor = true;
             this.CalculationButton.Click += new System.EventHandler(this.CalculationButton_Click);
             // 
-            // Form1
+            // Form1View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(349, 131);
+            this.ClientSize = new System.Drawing.Size(196, 77);
             this.Controls.Add(this.CalculationButton);
             this.Controls.Add(this.ResultLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BTextBox);
             this.Controls.Add(this.ATextBox);
-            this.Name = "Form1";
+            this.Name = "Form1View";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
