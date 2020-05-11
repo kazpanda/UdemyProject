@@ -4,7 +4,7 @@
 ' 2020/05/11 吉冨 新規作成
 '##############################################
 
-title ドメイン駆動開発 クラス図
+title テストサンプル クラス図
 
 ' --------------------------------------------
 ' Domain
@@ -13,54 +13,55 @@ title ドメイン駆動開発 クラス図
 ' Exceptions
 package FeederSerial <<Frame>> {
 
-   package View <<Frame>> {
+   package Views <<Frame>> {
       'View(Form)
-      class FeederSerialView <<View>>{
+      class AnalyzeView <<View>>{
          - string SearchText
          - string SearcheLabel
          - void Search()
       }
    }
-   
-   package ModelView <<Frame>> {
+
+   package ViewsModel <<Frame>> {
+
       ' ViewModel
-      class FeederSerialViewModel <ビューモデル> <<ViewModel>> {
+      class AnalyzeViewModel <<ViewModel>> {
          + string SearchText
          + string SearcheLabel
          + void Search()
       }
+
+      ' Logic
+      class Analyze {
+         + int Sum()
+         + int Ave()
+      }
    }
 
-   package Model <<Frame>> {
-      ' Model
-      class SerialModel <<Model>>{
-         + string SerialId
-         + string SerialNo
-         + string ModelName
-      }
+   package DAO <<Frame>> {
+
       ' インターフェイス
-      interface IFeederSerial <<Interface>>{
+      interface IDataBase <<Interface>>{
          --
-         + FeederModel GetData()
-         + FeederModel SetData()
+         + int GetDataBaseValue()
       }
 
       ' SQL
-      class FeederSerialSQLite {
+      class DataBaseDAO {
          --
-         + FeederModel GetData()
-         + FeederModel SetData()
+         + int GetDataBaseValue()
       }
 
    }
+
    ' Mock
-   class FeederSerialMock {
+   class Moq <<M,Mock>>{
       --
-      + FeederModel GetData()
-      + FeederModel SetData()
+      + int GetDataBaseValue()
    }
-
-
+   note bottom
+      実際はTestプロジェクトの中
+   end note
 
 }
 
@@ -69,7 +70,7 @@ package FeederSerial <<Frame>> {
 ' --------------------------------------------
 package Tests.Test <<Frame>>{
 
-   class FeederSerialViewModelTest <<Test>>{
+   class AnalyzeViewModelTest <<Test>>{
       + シナリオ()
    }
 
@@ -79,26 +80,23 @@ package Tests.Test <<Frame>>{
 ' --------------------------------------------
 ' データベース
 ' --------------------------------------------
-package DB{
-
-   database SQLiteDB{
+package DB  {
+   database Postgres {
    }
-
 }
 
 '----------------------------------------------
 'リレーション
 '----------------------------------------------
-FeederSerialView <-> FeederSerialViewModel
-FeederSerialViewModelTest --> FeederSerialViewModel
+AnalyzeView <-> AnalyzeViewModel
 
-FeederSerialViewModel <- SerialModel
-SerialModel <-- IFeederSerial
+AnalyzeViewModelTest --> AnalyzeViewModel
+AnalyzeViewModel <-- Analyze
+AnalyzeViewModel <-- IDataBase
 
+IDataBase <.. DataBaseDAO
+IDataBase <.. Moq
 
-IFeederSerial <.. FeederSerialSQLite
-IFeederSerial <.. FeederSerialMock
-
-FeederSerialSQLite <-- SQLiteDB
+DataBaseDAO .. Postgres
 
 @enduml

@@ -14,6 +14,8 @@ namespace AnalyzeSample {
     /// </summary>
     public class AnalyzeViewModel : INotifyPropertyChanged {
 
+        // インターフェイスを保持する
+        private IDataBase eIDataBase;
 
         // 同期イベントを呼ばれたら実行するようにする
         public event PropertyChangedEventHandler PropertyChanged;
@@ -73,11 +75,7 @@ namespace AnalyzeSample {
             if (PropertyChanged != null) {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
-        }
-
-        // インターフェイスを保持する
-        private IDataBase eIDataBase;
-        
+        }                                
 
 
         /// <summary>
