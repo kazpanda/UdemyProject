@@ -74,6 +74,7 @@ namespace Test.Tests {
 
         [TestMethod] 
         public void 平均値を取得できる_OK() {
+            // 事前にデータを準備する
             var list = new List<int> { 1, 2, 3, 4, 5 };
             var result = AnalyzeSample.Analyze.Ave(list);
             Assert.AreEqual(3, result);
