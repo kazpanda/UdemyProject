@@ -6,6 +6,8 @@ using NDDD.Domain.Repositories;
 using NDDD.WinForm.ViewModels;
 
 namespace NDDDTest.Tests.ViewModelTests {
+
+
     [TestClass]
     public class LatestViewModelTest {
 

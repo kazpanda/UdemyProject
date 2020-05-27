@@ -43,6 +43,12 @@ namespace NDDD.WinForm.ViewModels {
             return DateTime.Now;
         }
 
+        public void OnPropertyChanged() {
+            PropertyChanged.Invoke(
+                this,
+                new PropertyChangedEventArgs(""));
+        }
+
     }
 }
 
