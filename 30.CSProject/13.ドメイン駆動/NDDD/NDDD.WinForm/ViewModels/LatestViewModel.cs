@@ -1,5 +1,6 @@
 ﻿using NDDD.Domain.Entities;
 using NDDD.Domain.Repositories;
+using NDDD.Infrastructure;
 using System;
 
 namespace NDDD.WinForm.ViewModels {
@@ -20,10 +21,23 @@ namespace NDDD.WinForm.ViewModels {
         private string _measureDateText = string.Empty;
         private string _measureValueText = string.Empty;
 
+        /// <summary>
+        /// コンストラクター
+        /// 何も指定されていないときは
+        /// Factoriesを通じてインスタンスを生成する
+        /// </summary>
+        public LatestViewModel()
+            : this(Factories.CreateMeasure()) { 
+        }
 
-
-        // コンストラクター
+        /// <summary>
+        /// コンストラクター
+        /// 引数が指定されている
+        /// 指定されたRepositoriesを参照する
+        /// </summary>
+        /// <param name="measureRepository"></param>
         public LatestViewModel(IMeasureRepository measureRepository) {
+            // 共通のインスタンス
             _measureRepository = measureRepository;
         }
 

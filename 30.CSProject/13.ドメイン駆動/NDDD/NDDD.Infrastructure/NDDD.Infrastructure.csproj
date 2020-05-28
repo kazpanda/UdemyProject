@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factories.cs" />
     <Compile Include="Fake\MeasureFake.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServer\MeasureSqlServer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NDDD.Domain\NDDD.Domain.csproj">

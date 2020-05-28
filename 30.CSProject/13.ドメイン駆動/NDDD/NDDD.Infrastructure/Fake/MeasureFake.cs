@@ -7,7 +7,7 @@ namespace NDDD.Infrastructure.Fake {
     /// <summary>
     /// Measureテーブルのダミーデータ作成
     /// </summary>
-    public class MeasureFake : IMeasureRepository {
+    internal sealed class MeasureFake : IMeasureRepository {
 
 
         public MeasureEntity GetLatest() {

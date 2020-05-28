@@ -141,6 +141,14 @@
 * お勧めの支援ツール
 
 
+## 6.インスタンスを生成する
+* インスタンスの生成はFactoriesに集約する
+* Factories経由でしか生成できなくする publicではなくinternal
+
+## 7.設定の外部ファイル化
+* 参照からSystem.Configurationを追加
+* App.configの変更
+* NDDD.configの追加
 
 
 
