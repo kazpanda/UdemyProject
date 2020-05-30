@@ -1,14 +1,11 @@
-﻿using NDDD.Infrastructure;
-using NDDD.Infrastructure.Fake;
-using NDDD.WinForm.ViewModels;
-using System.Windows.Forms;
+﻿using NDDD.WinForm.ViewModels;
 
 namespace NDDD.WinForm.Views {
 
     /// <summary>
     /// LatestView
     /// </summary>
-    public partial class LatestView : Form {
+    public partial class LatestView : BaseForm {
 
         // ViewModelを参照する
         // インスタンス生成はFactoriesで生成する
@@ -21,23 +18,19 @@ namespace NDDD.WinForm.Views {
         public LatestView() {
             InitializeComponent();
 
-            toolStripStatusLabel1.Visible = false;
-#if DEBUG
-            toolStripStatusLabel1.Visible = true;
-#endif
-            // データバインド
+            // データバインド AreaIdTextBox
             AreaIdTextBox.DataBindings.Add(
                 "Text",
                 _viewModel,
                 nameof(_viewModel.AreaIdText));
 
-            // データバインド
+            // データバインド MeasureDateTextBox
             MeasureDateTextBox.DataBindings.Add(
                 "Text",
                 _viewModel,
                     nameof(_viewModel.MeasureDateText));
 
-            // データバインド
+            // データバインド MeasureValueTextBox
             MeasureValueTextBox.DataBindings.Add(
                 "Text",
                 _viewModel,

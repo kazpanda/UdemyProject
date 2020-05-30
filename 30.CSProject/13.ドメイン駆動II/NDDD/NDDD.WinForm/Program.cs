@@ -5,6 +5,7 @@ using System.Windows.Forms;
 namespace NDDD.WinForm {
 
     static class Program {
+
         /// <summary>
         /// アプリケーションのメイン エントリ ポイントです。
         /// </summary>
@@ -12,7 +13,7 @@ namespace NDDD.WinForm {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LatestView());
+            Application.Run(new LoginView());
         }
     }
 }

@@ -7,19 +7,19 @@ using NDDD.Infrastructure.SqlServer;
 namespace NDDD.Infrastructure {
 
     /// <summary>
+    /// Factoryパターン
     /// システム全体にてインスタンスを生成する箇所を集約する
     /// </summary>
     public static class Factories {
 
         /// <summary>
-        /// Factoryパターン
         /// インスタンスを生成する
         /// SqlServerかFakeか切り替える
         /// </summary>
         /// <returns></returns>
         public static IMeasureRepository CreateMeasure() {
 
-// リリースでは走らないようにする
+// デバッグビルドのみFakeの選択が可能
 #if DEBUG
             if (Shared.IsFake) {
                 return new MeasureFake();

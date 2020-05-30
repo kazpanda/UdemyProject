@@ -150,5 +150,26 @@
 * App.configの変更
 * NDDD.configの追加
 
+## 8.ValueObjectについて
+* ValueObjectは、値＋ロジック
+* 値にビジネスロジックがあればValueObject化する
+* 問題点
+* ValueObjectはクラスなので、値が同じでもイコールにはならない（参照型なので）
+* 抽象クラスを用意して、イコールイコール問題を対処する
 
+## 9.オブジェクト指向の自動化
+1.DBの列をすべてValueObjectにする
+  ビジネスロジックが無ければ不要かもしれない
+2.DBの値を運ぶ形でEntityにする（モデル）
+  Select分相当のEntityにValueObjectに乗せる
+3.外部接触部はリポジトリーにする
+  リポジトリー経由で値をとってくる
+  ここまでで、8割のクラス分けができる
+  複合的ValueObjectなビジネスロジックはEntityにて書く
+
+## 10.Repositoryの具象クラス
+* DBから取ってきた値にビジネスロジックを書く場合、ViewModelに書くとロジックが散らばる
+* SQLで取ってきて加工して渡すだけなら、Repositoryの具族クラスに書くことも検討
+
+Infrastructure層はシンプルに値だけをとる
 

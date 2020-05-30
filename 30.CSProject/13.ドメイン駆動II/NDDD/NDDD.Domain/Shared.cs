@@ -7,11 +7,28 @@ namespace NDDD.Domain {
     /// </summary>
     public static class Shared {
 
-        // SqlServerかFakeか分かるようにする
-        // ここでSqlかFakeか切り替える
-        // ここで指定するとコンパイルご変更できない
-        // 設定ファイルから読む
-        public static bool IsFake { get; } = 
+        /// <summary>
+        /// SqlServerかFakeか分かるようにする
+        /// ここでSqlかFakeか切り替える
+        /// 設定ファイルから読む
+        /// </summary>
+        public static bool IsFake { get; } =
             ConfigurationManager.AppSettings["IsFake"] == "1";
+
+
+        /// <summary>
+        /// Fakeファイルのパス
+        /// </summary>
+        public static string FakePath { get; } =
+            ConfigurationManager.AppSettings["FakePath"];
+
+
+        /// <summary>
+        /// ログインID
+        /// </summary>
+        public static string LoginId { get; set; } = string.Empty;
+
+
     }
 }
+

@@ -1,4 +1,5 @@
-﻿using NDDD.Domain.Entities;
+﻿using NDDD.Domain;
+using NDDD.Domain.Entities;
 using NDDD.Domain.Repositories;
 using System;
 
@@ -9,19 +10,13 @@ namespace NDDD.Infrastructure.Fake {
     /// </summary>
     internal sealed class MeasureFake : IMeasureRepository {
 
-        internal const string FakePath = @"";
 
         public MeasureEntity GetLatest() {
 
-            // モックのデータを作成
-            //return new MeasureEntity(
-            //    1,
-            //    Convert.ToDateTime("2020/05/27 22:00:00"),
-            //    12.341f);
-
+            // モックのデータをファイルから作成
             try {
                 var lines = System.IO.File.ReadAllLines(
-                    FakePath + "MeasureFake.csv");
+                    Shared.FakePath + "MeasureFake.csv");
                 var value = lines[0].Split(',');
                 return new MeasureEntity(
                     Convert.ToInt32(value[0]),
@@ -29,6 +24,7 @@ namespace NDDD.Infrastructure.Fake {
                     Convert.ToSingle(value[2]));
             }
             catch{
+                // ファイルが無かったらデフォルト
                 return new MeasureEntity(
                 1,
                 Convert.ToDateTime("2020/05/27 22:00:00"),

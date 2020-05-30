@@ -10,8 +10,10 @@ namespace NDDD.WinForm.ViewModels {
     /// </summary>
     public class LatestViewModel : ViewModelBase {
 
-        // インターフェイス
-        private IMeasureRepository _measureRepository;
+        // インターフェイスを使う場合
+        // private IMeasureRepository _measureRepository;
+        // 具象クラスを使う場合
+        private MeasureRepository _measureRepository;
 
         // 
         // private MeasureEntity _measure;
@@ -37,8 +39,11 @@ namespace NDDD.WinForm.ViewModels {
         /// </summary>
         /// <param name="measureRepository"></param>
         public LatestViewModel(IMeasureRepository measureRepository) {
-            // 共通のインスタンス
-            _measureRepository = measureRepository;
+            // 共通のインスタンス（インターフェースの場合）
+            // _measureRepository = measureRepository;
+
+            // 共通のインスタンス（具象クラスの場合）
+            _measureRepository = new MeasureRepository(measureRepository);
         }
 
         /// <summary>
@@ -94,9 +99,18 @@ namespace NDDD.WinForm.ViewModels {
             
             // プロパティーを通じて更新
             // View側へ通知を行う
-            AreaIdText = measure.AreaId.ToString().PadLeft(4, '0');
-            MeasureDateText = measure.MeasureDate.ToString("yyyy/MM/dd HH:mm:ss");
-            MeasureValueText = Math.Round(measure.MeasureValue, 2) + "℃";
+
+
+            // AreaIdText = measure.AreaId.ToString().PadLeft(4, '0');
+            // ValueObject化
+            // Objectを指定
+            AreaIdText = measure.AreaId.DisplayValue;
+
+            // MeasureDateText = measure.MeasureDate.ToString("yyyy/MM/dd HH:mm:ss");
+            MeasureDateText = measure.MeasureDate.DisplayValue;
+
+            // MeasureValueText = Math.Round(measure.MeasureValue, 2) + "℃";
+            MeasureValueText = measure.MeasureValue.DisplayValue;
 
         }
     }
