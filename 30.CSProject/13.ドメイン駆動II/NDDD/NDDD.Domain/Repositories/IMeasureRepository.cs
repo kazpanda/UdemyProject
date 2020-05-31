@@ -1,4 +1,5 @@
 ﻿using NDDD.Domain.Entities;
+using System.Collections.Generic;
 
 /// <summary>
 /// インターフェイス
@@ -12,6 +13,9 @@ namespace NDDD.Domain.Repositories {
 
         // 最新の取得
         MeasureEntity GetLatest();
+
+        // 最新のリスト
+        IReadOnlyList<MeasureEntity> GetLatests();
 
     }
 }

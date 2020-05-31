@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NDDD.Domain.Helpers;
+using System;
 
 namespace NDDD.Domain.ValueObjects {
 
@@ -36,8 +33,10 @@ namespace NDDD.Domain.ValueObjects {
 
         // ビジネスロジック処理があればここに書く
         // この例は、表示の制御（℃表示）
-        public string DisplayValue => Math.Round(Value, 2) + "℃";
-
+        //public string DisplayValue => Math.Round(Value, 2) + "℃";
+        
+        // Helperに共通関数を作った場合
+        public string DisplayValue => Value.RoundString(2) + "℃"; 
 
 
     }

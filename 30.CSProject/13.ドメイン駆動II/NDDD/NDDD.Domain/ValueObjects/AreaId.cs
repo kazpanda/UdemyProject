@@ -19,6 +19,11 @@ namespace NDDD.Domain.ValueObjects {
     /// 解決のためValueObject基底抽象クラスを継承してEqualsCoreを実装する
     /// </summary>
     public sealed class AreaId:ValueObject<AreaId> {
+       
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="value"></param>
         public AreaId(int value) {
             Value = value;
         }
@@ -36,7 +41,7 @@ namespace NDDD.Domain.ValueObjects {
 
         // ビジネスロジック処理があればここに書く
         // この例は、表示の制御（4桁表示）
-        public string DisplayValue => Value.ToString().PadLeft(4, '0');
+        public string DisplayValue => Value.ToString().PadLeft(3, '0');
 
 
     }

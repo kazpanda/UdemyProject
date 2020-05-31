@@ -3,6 +3,7 @@ using NDDD.Domain.Entities;
 using NDDD.Domain.Exceptions;
 using NDDD.Domain.Repositories;
 using System;
+using System.Collections.Generic;
 
 namespace NDDD.Infrastructure.Fake {
 
@@ -23,8 +24,7 @@ namespace NDDD.Infrastructure.Fake {
                     Convert.ToInt32(value[0]),
                     Convert.ToDateTime(value[1]),
                     Convert.ToSingle(value[2]));
-            }
-            catch(Exception ex){
+            } catch (Exception ex) {
 
                 // ①ファイルが無かったらデフォルトを返す
                 //return new MeasureEntity(
@@ -34,9 +34,33 @@ namespace NDDD.Infrastructure.Fake {
 
                 // ②ファイルが無かったら例外を渡す
                 // Exception情報も渡す
-                throw new FakeException("MeasureFakeの取得に失敗しました。",ex);
+                throw new FakeException("MeasureFakeの取得に失敗しました。", ex);
 
             }
+        }
+
+        public IReadOnlyList<MeasureEntity> GetLatests() {
+            var result = new List<MeasureEntity>();
+            result.Add(
+                new MeasureEntity(
+                    10,
+                    Convert.ToDateTime("2020/05/31 20:00:00"),
+                    24.65f));
+
+            result.Add(
+                new MeasureEntity(
+                    20,
+                    Convert.ToDateTime("2020/05/31 20:00:00"),
+                    24.65f));
+
+            result.Add(
+                new MeasureEntity(
+                    30,
+                    Convert.ToDateTime("2020/05/31 20:00:00"),
+                    24.65f));
+
+            return result;
+
         }
     }
 }

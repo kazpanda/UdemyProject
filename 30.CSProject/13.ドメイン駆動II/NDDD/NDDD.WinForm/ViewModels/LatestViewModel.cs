@@ -1,7 +1,10 @@
 ﻿using NDDD.Domain.Entities;
 using NDDD.Domain.Repositories;
+using NDDD.Domain.StaticValues;
+using NDDD.Domain.ValueObjects;
 using NDDD.Infrastructure;
 using System;
+using System.Transactions;
 
 namespace NDDD.WinForm.ViewModels {
 
@@ -92,7 +95,10 @@ namespace NDDD.WinForm.ViewModels {
         /// </summary>
         public void Search() {
 
-            var measure = _measureRepository.GetLatest();
+            // var measure = _measureRepository.GetLatest();
+
+            var measure = Measures.GetLatests( new AreaId(10));
+            if (measure == null) return;
 
             // Viewへ通知
             // base.OnPropertyChanged();
@@ -112,6 +118,26 @@ namespace NDDD.WinForm.ViewModels {
             // MeasureValueText = Math.Round(measure.MeasureValue, 2) + "℃";
             MeasureValueText = measure.MeasureValue.DisplayValue;
 
+        }
+
+
+        /// <summary>
+        /// DBへ更新処理
+        /// トランザクションを行う
+        /// </summary>
+        public void Save() {
+
+            // トランザクション
+            // System.Transactionsを使用しViewModelにてトランザクションを制御する
+            using (var scope = new TransactionScope()) {
+                // ヘッダー取得
+                // 明細取得
+                // 在庫更新
+                // 履歴更新
+                // 顧客情報更新
+
+                scope.Complete();
+            }
         }
     }
 }

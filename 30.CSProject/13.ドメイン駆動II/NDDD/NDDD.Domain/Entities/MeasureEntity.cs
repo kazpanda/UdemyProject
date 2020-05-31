@@ -4,7 +4,7 @@ using System;
 namespace NDDD.Domain.Entities {
 
     /// <summary>
-    /// 計測値モデル
+    /// 計測エンティティ
     /// Entityモデルクラス
     /// </summary>
     public sealed class MeasureEntity {
@@ -14,9 +14,9 @@ namespace NDDD.Domain.Entities {
         /// DDDでは完全コンストラクターにする（引数に全ての項目を含む）
         /// 値をセットしたら変更はできない
         /// </summary>
-        /// <param name="areaId"></param>
-        /// <param name="measureDate"></param>
-        /// <param name="measureValue"></param>
+        /// <param name="areaId">エリアID</param>
+        /// <param name="measureDate">計測日</param>
+        /// <param name="measureValue">計測値</param>
         public MeasureEntity(
             int areaId,
             DateTime measureDate,

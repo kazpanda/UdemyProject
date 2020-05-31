@@ -16,9 +16,9 @@ namespace NDDDTest.Tests.ViewModelTests {
 
             // モックのデータを作成
             var entity = new MeasureEntity(
-                1,
+                010,
                 Convert.ToDateTime("2020/05/26 22:00:00"),
-                12.341f);
+                12.34f);
 
             // Moqセット
             var measureMock = new Mock<IMeasureRepository>();
@@ -29,7 +29,7 @@ namespace NDDDTest.Tests.ViewModelTests {
             // 計測日時
             // 計測値
             vm.Search();
-            vm.AreaIdText.Is("0001");
+            vm.AreaIdText.Is("010");
             vm.MeasureDateText.Is("2020/05/26 22:00:00");
             vm.MeasureValueText.Is("12.34℃");
 
