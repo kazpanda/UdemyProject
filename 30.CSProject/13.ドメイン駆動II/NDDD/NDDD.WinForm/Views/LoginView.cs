@@ -22,6 +22,7 @@ namespace NDDD.WinForm.Views {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void LoginButton_Click(object sender, System.EventArgs e) {
+
             Shared.LoginId = LoginTextBox.Text;
             
             // LatestViewの表示

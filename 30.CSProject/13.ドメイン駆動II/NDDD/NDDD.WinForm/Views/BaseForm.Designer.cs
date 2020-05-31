@@ -61,6 +61,8 @@
             this.Controls.Add(this.statusStrip1);
             this.Name = "BaseForm";
             this.Text = "BaseForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BaseForm_FormClosed);
+            this.Load += new System.EventHandler(this.BaseForm_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
