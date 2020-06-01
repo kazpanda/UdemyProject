@@ -9,7 +9,7 @@ using System.Transactions;
 namespace NDDD.WinForm.ViewModels {
 
     /// <summary>
-    /// LatestViewModel
+    /// 直近値のViewModel
     /// </summary>
     public class LatestViewModel : ViewModelBase {
 
@@ -21,9 +21,19 @@ namespace NDDD.WinForm.ViewModels {
         // 
         // private MeasureEntity _measure;
 
-        // 通知の方法を改善する
+        /// <summary>
+        /// エリアId
+        /// </summary>
         private string _areaIdText = string.Empty;
+        
+        /// <summary>
+        /// 計測日
+        /// </summary>
         private string _measureDateText = string.Empty;
+
+        /// <summary>
+        /// 計測値
+        /// </summary>
         private string _measureValueText = string.Empty;
 
         /// <summary>
@@ -50,7 +60,7 @@ namespace NDDD.WinForm.ViewModels {
         }
 
         /// <summary>
-        /// AreaIdText
+        /// エリアId
         /// </summary>
         public string AreaIdText {
             get {
@@ -63,7 +73,7 @@ namespace NDDD.WinForm.ViewModels {
         }
 
         /// <summary>
-        /// MeasureDateText
+        /// 計測日
         /// </summary>
         public string MeasureDateText {
             get {
@@ -78,7 +88,7 @@ namespace NDDD.WinForm.ViewModels {
         }
 
         /// <summary>
-        /// MeasureValueText
+        /// 計測値
         /// </summary>
         public string MeasureValueText {
             get {
@@ -122,6 +132,7 @@ namespace NDDD.WinForm.ViewModels {
 
 
         /// <summary>
+        /// 保存処理
         /// DBへ更新処理
         /// トランザクションを行う
         /// </summary>

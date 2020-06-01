@@ -8,12 +8,18 @@ using System.Threading;
 namespace NDDD.WinForm.BackgroundWorkers {
 
     /// <summary>
-    /// Latest用のタイマー処理
-    /// 
+    /// 直近値のタイマー処理
     /// </summary>
     internal static class LatestTimer {
 
+        /// <summary>
+        /// タイマー
+        /// </summary>
         private static Timer _timer;
+
+        /// <summary>
+        /// 処理の時はTrue
+        /// </summary>        
         private static bool _isWork=false;
 
         /// <summary>

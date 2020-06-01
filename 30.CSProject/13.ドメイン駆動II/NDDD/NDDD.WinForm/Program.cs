@@ -5,6 +5,9 @@ using System.Windows.Forms;
 
 namespace NDDD.WinForm {
 
+    /// <summary>
+    /// Program
+    /// </summary>
     static class Program {
 
         /// <summary>
@@ -31,6 +34,7 @@ namespace NDDD.WinForm {
             // タイマーのスタート
             LatestTimer.Start();
 
+            // 画面起動
             Application.Run(new LoginView());
         }
     }

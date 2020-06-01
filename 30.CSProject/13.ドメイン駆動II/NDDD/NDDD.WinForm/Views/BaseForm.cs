@@ -71,11 +71,20 @@ namespace NDDD.WinForm.Views {
             MessageBox.Show(ex.Message, caption, MessageBoxButtons.OK, icon);
         }
 
-
+        /// <summary>
+        /// 起動時
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BaseForm_Load(object sender, EventArgs e) {
             _logger.Info("open:" + this.Name);
         }
 
+        /// <summary>
+        /// クローズ時
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BaseForm_FormClosed(object sender, FormClosedEventArgs e) {
             _logger.Info("close:" + this.Name);
         }

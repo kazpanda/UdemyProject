@@ -304,3 +304,22 @@
 - ViewModel で掛けるのが融通がきく
 - Infrastructure でトランザクションを掛けると、融通が利かない
 - System.Transactions を使用し using で囲む
+
+
+## 24.特徴を見極める
+- 値
+  - static アプリに1つ
+    - StaticValues DBの値やリスト
+    - Shared システム情報やユーザー情報
+  - Entity or ValueObject 処理の度に生成
+    - Entity 一意なもの DBの行
+    - ValueObject DBの列 フィールド
+
+- ロジック
+  - Helpers 共通関数的なもの
+  - Logics ビジネスロジック
+  - Entity or ValueObject データと一体型
+
+
+  
+  
