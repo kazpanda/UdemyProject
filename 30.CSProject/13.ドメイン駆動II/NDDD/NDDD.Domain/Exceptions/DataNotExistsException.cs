@@ -1,7 +1,7 @@
 ﻿using System;
 
 /// <summary>
-/// 
+/// 例外処理
 /// </summary>
 namespace NDDD.Domain.Exceptions {
     /// <summary>
@@ -9,6 +9,9 @@ namespace NDDD.Domain.Exceptions {
     /// </summary>
     public sealed class DataNotExistsException:ExceptionBase {
 
+        /// <summary>
+        /// コンストラクター
+        /// </summary>
         public DataNotExistsException() 
             :base("データがありません"){
 

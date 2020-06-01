@@ -31,10 +31,11 @@ namespace NDDD.Domain.ValueObjects {
             return this.Value == other.Value;
         }
 
+        // 表示する項目
         // ビジネスロジック処理があればここに書く
         // この例は、表示の制御（℃表示）
         //public string DisplayValue => Math.Round(Value, 2) + "℃";
-        
+
         // Helperに共通関数を作った場合
         public string DisplayValue => Value.RoundString(2) + "℃"; 
 

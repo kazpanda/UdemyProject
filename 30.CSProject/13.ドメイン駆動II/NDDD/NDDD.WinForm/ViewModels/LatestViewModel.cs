@@ -97,7 +97,7 @@ namespace NDDD.WinForm.ViewModels {
 
             // var measure = _measureRepository.GetLatest();
 
-            var measure = Measures.GetLatests( new AreaId(10));
+            var measure = Measures.GetLatest( new AreaId(10));
             if (measure == null) return;
 
             // Viewへ通知

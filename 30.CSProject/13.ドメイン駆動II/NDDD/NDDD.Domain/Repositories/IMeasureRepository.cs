@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 
 /// <summary>
-/// インターフェイス
+/// リポジトリー
 /// </summary>
 namespace NDDD.Domain.Repositories {
 
     /// <summary>
-    /// Measureインターフェイス
+    /// 計測リポジトリー
     /// </summary>
     public interface IMeasureRepository {
 
-        // 最新の取得
+        // 直近値の取得
         MeasureEntity GetLatest();
 
-        // 最新のリスト
+        // エリアごとの直近値を取得
         IReadOnlyList<MeasureEntity> GetLatests();
 
     }

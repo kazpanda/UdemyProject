@@ -16,8 +16,8 @@ namespace NDDD.Domain.Exceptions {
         /// コンストラクタ
         /// 第2引数にException
         /// </summary>
-        /// <param name="message"></param>
-        /// <param name="exception"></param>
+        /// <param name="message">メッセージ</param>
+        /// <param name="exception">元になった例外</param>
         public FakeException(string message,Exception exception)
             :base(message,exception) {
 

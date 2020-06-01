@@ -1,12 +1,8 @@
 ﻿using NDDD.Domain.Entities;
 using NDDD.Domain.Repositories;
 using NDDD.Domain.ValueObjects;
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 /// <summary>
 /// 値を保存する
@@ -15,7 +11,7 @@ using System.Threading.Tasks;
 namespace NDDD.Domain.StaticValues {
 
     /// <summary>
-    /// MeasureEntityのコレクション
+    /// エリアごとの直近値のリスト
     /// </summary>
     public static class Measures {
 
@@ -27,7 +23,7 @@ namespace NDDD.Domain.StaticValues {
         /// <summary>
         /// リストを作成する
         /// </summary>
-        /// <param name="repository"></param>
+        /// <param name="repository">計測リポジトリー</param>
         public static void Create(IMeasureRepository repository) {
             
             // publicになっているので複数からアクセスされる可能性がある
@@ -38,14 +34,28 @@ namespace NDDD.Domain.StaticValues {
             }
         }
 
+
+        /// <summary>
+        /// リストに追加する
+        /// </summary>
+        /// <param name="entity">計測リポジトリー</param>
+        public static void Add(MeasureEntity entity) {
+            
+            // ここも一つだけアクセスの保証を行う
+            lock (((ICollection)_entities).SyncRoot) {
+                _entities.Add(entity);
+            }
+        }
+
+
         /// <summary>
         /// リストを使えるようにメソッドを公開する
         /// AreaIdを検索して結果を返す
         /// </summary>
-        /// <param name="areaId"></param>
+        /// <param name="areaId">エリアId</param>
         /// <returns></returns>
         public static MeasureEntity GetLatest(AreaId areaId) {
-
+            
             // ここも一つだけアクセスの保証を行う
             lock (((ICollection)_entities).SyncRoot) {
                 return _entities.Find(x => x.AreaId == areaId);

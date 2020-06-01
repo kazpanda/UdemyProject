@@ -70,9 +70,6 @@
     <Compile Include="ViewModelTests\LatestViewModelTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\NDDD.Domain\NDDD.Domain.csproj">
       <Project>{6e4efec9-3286-4513-a09a-f9b5e5e88a1e}</Project>
       <Name>NDDD.Domain</Name>
@@ -86,7 +83,9 @@
       <Name>NDDD.WinForm</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

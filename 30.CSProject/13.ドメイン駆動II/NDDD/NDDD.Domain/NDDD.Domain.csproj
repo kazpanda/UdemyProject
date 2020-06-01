@@ -50,8 +50,8 @@
     <Compile Include="Exceptions\DataNotExistsException.cs" />
     <Compile Include="Exceptions\ExceptionBase.cs" />
     <Compile Include="Exceptions\FakeException.cs" />
-    <Compile Include="Helpers\FloatHelper.cs" />
-    <Compile Include="Logics\MeasureAnalysis.cs" />
+    <Compile Include="Moduls\Helpers\FloatHelper.cs" />
+    <Compile Include="Moduls\Logics\MeasureAnalysis.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IMeasureRepository.cs" />
     <Compile Include="Repositories\MeasureRepository.cs" />
@@ -68,8 +68,6 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Moduls\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,10 +13,10 @@ namespace NDDD.Infrastructure {
     public static class Factories {
 
         /// <summary>
-        /// インスタンスを生成する
+        /// 計測りぽじとりーの生成する
         /// SqlServerかFakeか切り替える
         /// </summary>
-        /// <returns></returns>
+        /// <returns>計測リポジトリー</returns>
         public static IMeasureRepository CreateMeasure() {
 
 // デバッグビルドのみFakeの選択が可能

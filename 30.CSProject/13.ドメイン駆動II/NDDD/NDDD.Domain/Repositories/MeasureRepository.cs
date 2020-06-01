@@ -21,7 +21,7 @@ namespace NDDD.Domain.Repositories {
         /// <summary>
         /// コンストラクター
         /// </summary>
-        /// <param name="repository"></param>
+        /// <param name="repository">計測リポジトリー</param>
         public MeasureRepository(IMeasureRepository repository) {
             _repository = repository;
         }

@@ -15,7 +15,7 @@ namespace NDDD.Domain.Exceptions {
         /// <summary>
         /// コンストラクタ（引数に例外なし）
         /// </summary>
-        /// <param name="message"></param>
+        /// <param name="message">メッセージ</param>
         public ExceptionBase(string message):base(message) {
 
         }
@@ -23,8 +23,8 @@ namespace NDDD.Domain.Exceptions {
         /// <summary>
         /// コンストラクタ（引数に例外あり）
         /// </summary>
-        /// <param name="message"></param>
-        /// <param name="exception"></param>
+        /// <param name="message">メッセージ</param>
+        /// <param name="exception">元になった例外</param>
         public ExceptionBase(string message, Exception exception)
             : base(message, exception) { 
 

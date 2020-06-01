@@ -30,6 +30,7 @@ namespace NDDD.Domain.ValueObjects {
             return this.Value == other.Value;
         }
 
+        // 表示する項目
         // ビジネスロジック処理があればここに書く
         // この例は、表示の制御（4桁表示）
         public string DisplayValue => Value.ToString("yyyy/MM/dd HH:mm:ss");
