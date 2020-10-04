@@ -1,9 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using NDDD.Domain.Entities;
 using NDDD.Domain.Repositories;
 using NDDD.WinForm.ViewModels;
-using System;
 
 namespace NDDDTest.Tests.ViewModelTests {
 
@@ -16,7 +16,7 @@ namespace NDDDTest.Tests.ViewModelTests {
 
             // モックのデータを作成
             var entity = new MeasureEntity(
-                1,
+                010,
                 Convert.ToDateTime("2020/05/26 22:00:00"),
                 12.34f);
 
@@ -28,9 +28,8 @@ namespace NDDDTest.Tests.ViewModelTests {
             // エリアID
             // 計測日時
             // 計測値
-
-            vm.Search();
-            vm.AreaIdText.Is("001");
+            vm.Search(010);
+            vm.AreaIdText.Is("010");
             vm.MeasureDateText.Is("2020/05/26 22:00:00");
             vm.MeasureValueText.Is("12.34℃");
 

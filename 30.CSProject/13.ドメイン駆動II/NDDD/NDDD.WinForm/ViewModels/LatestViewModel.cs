@@ -1,4 +1,5 @@
 ﻿using NDDD.Domain.Entities;
+using NDDD.Domain.Exceptions;
 using NDDD.Domain.Repositories;
 using NDDD.Domain.StaticValues;
 using NDDD.Domain.ValueObjects;
@@ -10,15 +11,17 @@ namespace NDDD.WinForm.ViewModels {
 
     /// <summary>
     /// 直近値のViewModel
+    /// ①インターフェースの場合
+    /// ②具象クラスの場合（ロジックを実装したい場合）
     /// </summary>
     public class LatestViewModel : ViewModelBase {
 
-        // インターフェイスを使う場合
-        // private IMeasureRepository _measureRepository;
-        // 具象クラスを使う場合
-        private MeasureRepository _measureRepository;
+        // ①インターフェイスを使う場合
+        private IMeasureRepository _measureRepository;
+        // ②具象クラスを使う場合
+        //private MeasureRepository _measureRepository;
 
-        // 
+
         // private MeasureEntity _measure;
 
         /// <summary>
@@ -52,11 +55,10 @@ namespace NDDD.WinForm.ViewModels {
         /// </summary>
         /// <param name="measureRepository"></param>
         public LatestViewModel(IMeasureRepository measureRepository) {
-            // 共通のインスタンス（インターフェースの場合）
-            // _measureRepository = measureRepository;
-
-            // 共通のインスタンス（具象クラスの場合）
-            _measureRepository = new MeasureRepository(measureRepository);
+            // ①共通のインスタンス（インターフェースの場合）
+            _measureRepository = measureRepository;
+            // ②共通のインスタンス（具象クラスの場合）
+            //_measureRepository = new MeasureRepository(measureRepository);
         }
 
         /// <summary>
@@ -105,17 +107,15 @@ namespace NDDD.WinForm.ViewModels {
         /// </summary>
         public void Search() {
 
-            // var measure = _measureRepository.GetLatest();
-
-            var measure = Measures.GetLatest( new AreaId(10));
-            if (measure == null) return;
-
-            // Viewへ通知
-            // base.OnPropertyChanged();
-            
-            // プロパティーを通じて更新
-            // View側へ通知を行う
-
+            // ①インターフェース
+            var measure = _measureRepository.GetLatest();
+            // ②具象クラス
+            //var measure = Measures.GetLatest( new AreaId(10));
+           
+            // データが無ければ例外
+            if (measure == null) {
+                throw new DataNotExistsException();
+            }
 
             // AreaIdText = measure.AreaId.ToString().PadLeft(4, '0');
             // ValueObject化

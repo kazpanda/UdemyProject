@@ -48,6 +48,13 @@ namespace NDDD.Infrastructure.Fake {
         /// <returns></returns>
         public IReadOnlyList<MeasureEntity> GetLatests() {
             var result = new List<MeasureEntity>();
+
+            result.Add(
+                new MeasureEntity(
+                    1,
+                    Convert.ToDateTime("2020/05/31 20:00:00"),
+                    24.65f));
+
             result.Add(
                 new MeasureEntity(
                     10,

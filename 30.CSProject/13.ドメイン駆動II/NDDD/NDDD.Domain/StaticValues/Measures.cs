@@ -30,6 +30,7 @@ namespace NDDD.Domain.StaticValues {
             // 一つだけのアクセスlockで保証する
             lock (((ICollection)_entities).SyncRoot) {
                 _entities.Clear();
+                // リストを取得
                 _entities.AddRange(repository.GetLatests());
             }
         }
