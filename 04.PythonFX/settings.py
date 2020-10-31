@@ -4,7 +4,7 @@ import configparser
 def bool_from_str(text: str) -> bool:
     if text.lower() == 'true':
         return True
-    if text.lower() == 'fales':
+    if text.lower() == 'false':
         return False
     
 
@@ -12,7 +12,7 @@ conf = configparser.ConfigParser()
 conf.read('./settings.ini')
 
 account_id = conf['oanda']['account_id']
-account_token = conf['oanda']['account_token']
+access_token = conf['oanda']['access_token']
 product_code = conf['oanda']['product_code']
 
 db_name = conf['db']['name']
