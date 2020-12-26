@@ -1,0 +1,6 @@
+TA-LIBのインストール方法
+
+ルートにダウンロードした、TA_Lib-0.4.19-cp37-cp37m-win_amd64.whlを保存
+下記のコマンドを実行
+# pip install TA_Lib-0.4.19-cp37-cp37m-win_amd64.whl
+

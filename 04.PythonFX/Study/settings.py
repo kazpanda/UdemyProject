@@ -1,15 +1,10 @@
 import configparser
 
+from utils.utils import bool_from_str
 
-def bool_from_str(text: str) -> bool:
-    if text.lower() == 'true':
-        return True
-    if text.lower() == 'false':
-        return False
-    
 
 conf = configparser.ConfigParser()
-conf.read('./settings.ini')
+conf.read('settings.ini')
 
 account_id = conf['oanda']['account_id']
 access_token = conf['oanda']['access_token']
