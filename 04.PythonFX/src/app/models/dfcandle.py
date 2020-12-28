@@ -260,6 +260,9 @@ class DataFrameCandle(object):
         return False
 
     def add_events(self, time):
+        """
+        新規注文
+        """
         signal_events = SignalEvents.get_signal_events_after_time(time)
         if len(signal_events.signals) > 0:
             self.events = signal_events
@@ -267,6 +270,9 @@ class DataFrameCandle(object):
         return False
 
     def back_test_ema(self, period_1: int, period_2: int):
+        """
+        バックテスト(EMA)
+        """
         if len(self.candles) <= period_1 or len(self.candles) <= period_2:
             return None
 
@@ -305,6 +311,9 @@ class DataFrameCandle(object):
         return performance, best_period_1, best_period_2
 
     def back_test_bb(self, n: int, k: float):
+        """
+        バックテスト(BB)
+        """
         if len(self.candles) <= n:
             return None
 
@@ -342,6 +351,9 @@ class DataFrameCandle(object):
         return performance, best_n, best_k
 
     def back_test_ichimoku(self):
+        """
+        バックテスト(一目均衡表)
+        """
         if len(self.candles) <= 52:
             return None
 
@@ -372,6 +384,9 @@ class DataFrameCandle(object):
         return signal_events.profit
 
     def back_test_rsi(self, period: int, buy_thread: float, sell_thread: float):
+        """
+        バックテスト(RSI)
+        """
         if len(self.candles) <= period:
             return None
 
@@ -412,6 +427,9 @@ class DataFrameCandle(object):
         return performance, best_period, best_buy_thread, best_sell_thread
 
     def back_test_macd(self, macd_fast_period: int, macd_slow_period: int, macd_signal_period: int):
+        """
+        バックテスト(MACD)
+        """
         if len(self.candles) <= macd_fast_period or len(self.candles) <= macd_slow_period or len(self.candles) <= macd_signal_period:
             return None
 

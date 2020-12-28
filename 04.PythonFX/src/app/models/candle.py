@@ -187,20 +187,25 @@ def create_candle_with_duration(product_code, duration, ticker):
     """
     candleの生成
     tick情報から生成する
+    新規作成=True,更新=False
     """
     cls = factory_candle_class(product_code, duration)
     ticker_time = ticker.truncate_date_time(duration)
     current_candle = cls.get(ticker_time)
     price = ticker.mid_price
+    # 時間足テーブルが無ければテーブルを作成する
     if current_candle is None:
         cls.create(ticker_time, price, price, price, price, ticker.volume)
         return True
 
+    # 価格更新
     if current_candle.high <= price:
         current_candle.high = price
     elif current_candle.low >= price:
         current_candle.low = price
+    # 出来高更新    
     current_candle.volume += ticker.volume
     current_candle.close = price
+    # candle保存
     current_candle.save()
     return False

@@ -45,6 +45,9 @@ class SignalEvent(Base):
 
     @classmethod
     def get_signal_events_by_count(cls, count, prduct_code=settings.product_code):
+        """
+        注文数の取得
+        """
         with session_scope() as session:
             rows = session.query(cls).filter(cls.product_code == prduct_code).order_by(desc(cls.time)).limit(count).all()
             if rows is None:
@@ -54,6 +57,9 @@ class SignalEvent(Base):
 
     @classmethod
     def get_signal_events_after_time(cls, time):
+        """
+        注文後の経過時間
+        """
         with session_scope() as session:
             rows = session.query(cls).filter(cls.time >= time).all()
 
@@ -65,7 +71,7 @@ class SignalEvent(Base):
 
 class SignalEvents(object):
     """
-    売買イベントモデルクラス
+    売買注文モデルクラス
     """
     def __init__(self, signals=None):
         if signals is None:
@@ -94,6 +100,9 @@ class SignalEvents(object):
         return False
 
     def buy(self, product_code, time, price, units, save):
+        """
+        Buy注文
+        """
         if not self.can_buy(time):
             return False
 
@@ -106,6 +115,9 @@ class SignalEvents(object):
         return True
 
     def sell(self, product_code, time, price, units, save):
+        """
+        Sell注文
+        """
         if not self.can_sell(time):
             return False
 
@@ -119,6 +131,9 @@ class SignalEvents(object):
 
     @staticmethod
     def get_signal_events_by_count(count: int):
+        """
+        注文数の取得
+        """
         signal_events = SignalEvent.get_signal_events_by_count(count)
         return SignalEvents(signal_events)
 
@@ -129,6 +144,9 @@ class SignalEvents(object):
 
     @property
     def profit(self):
+        """
+        利益取得
+        """
         total = 0.0
         before_sell = 0.0
         is_holding = False

@@ -1,0 +1,126 @@
+@startuml
+
+'##############################################
+' 2020/12/28 吉冨 新規作成
+'##############################################
+
+title Python クラス図
+
+
+package FX <<Frame>> {
+
+   package App <<Frame>> {
+      package Controllers <<Frame>> {
+         class AI <<Logic>>{
+            + update_optimize_params(self, is_continue: bool)
+            + buy(self, candle)
+            + sell(self, candle)
+            + trade(self)
+         }
+         class StreamData <<Logic>>{
+            + stream_ingestion_data(self)
+            + trade(self, ticker: Ticker, ai: AI)
+         }
+         class webserver <<Logic>>{
+            + remove_session(ex=None)
+            + api_make_handler()
+            + start()
+         }
+      }
+
+      package Models <<Frame>> {
+
+         class BaseCandleMixin <<View>>{
+            + create(cls, time, open, close, high, low, volume)
+            + get(cls, time)
+            + save(self)
+            + get_all_candles(cls, limit=100)
+            + value(self)
+
+            + factory_candle_class(product_code, duration)
+            + create_candle_with_duration(product_code, duration, ticker)
+
+         }
+         class GbpJpyBaseCandle1D{
+
+         }
+
+         class DataFrameCandle <<View>>{
+            + set_all_candles(self, limit=1000)
+            + add_events(self, time)
+         }
+
+         class SignalEvent <<View>>{
+            + save(self)
+            + get_signal_events_by_count(cls, count, prduct_code=settings.product_code)
+            + get_signal_events_after_time(cls, time)
+         }
+
+         class SignalEvents {
+            + can_buy(self, time)
+            + can_sell(self, time)
+            + buy(self, product_code, time, price, units, save)
+            + sell(self, product_code, time, price, units, save)
+            + get_signal_events_by_count(count: int)
+            + get_signal_events_after_time(time: datetime.datetime.time)
+         }
+      }
+
+      package Views <<Frame>> {
+
+         class WebServer <<View>>{
+            - void Search()
+         }
+      }
+   }
+
+   package Oaanda <<Frame>> {
+      ' ViewModel
+      class Balance <ビジネスロジック> <<ViewModel>> {
+      }
+      class Ticker <ビジネスロジック> <<ViewModel>> {
+      }
+      class Order <ビジネスロジック> <<ViewModel>> {
+      }
+      class OrderTimeoutError <ビジネスロジック> <<ViewModel>> {
+      }
+      class Trade <ビジネスロジック> <<ViewModel>> {
+      }
+      class APIClient <ビジネスロジック> <<ViewModel>> {
+      }
+   }
+
+   package TradingAlgo <<Frame>> {
+      ' Model
+      class SerialModel <<Model>>{
+         + string SerialId
+         + string SerialNo
+         + string ModelName
+      }
+   }
+
+   ' Tests
+   package Util <<Frame>>{
+      class property <<Test>>{
+         + シナリオ()
+      }
+   }
+
+   class Main <<Frame>>{
+      + main
+   }
+}
+
+' データベース
+package DB{
+   database SQLiteDB{
+   }
+}
+
+'リレーション
+Main <-- StreamData
+Main <-- webserver
+
+StreamData <-- Oaanda
+
+@enduml

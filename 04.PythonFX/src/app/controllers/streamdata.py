@@ -26,15 +26,25 @@ class StreamData(object):
         self.trade_lock = Lock()
 
     def stream_ingestion_data(self):
+        """
+        Streamデータの取得
+        """
         trade_with_ai = partial(self.trade, ai=self.ai)
+        # 現在のTicker情報の取得
         self.ai.API.get_realtime_ticker(callback=trade_with_ai)
 
     def trade(self, ticker: Ticker, ai: AI):
+        """
+        トレード実行スレッド
+        """
         logger.info(f'action=trade ticker={ticker.__dict__}')
         for duration in constants.DURATIONS:
+            # candleの新規作成(新規でTrue、更新でFalse)    
             is_created = create_candle_with_duration(ticker.product_code, duration, ticker)
             if is_created and duration == settings.trade_duration:
+                # candleが新規作成
                 thread = Thread(target=self._trade, args=(ai,))
+                # スレッド作成
                 thread.start()
 
     def _trade(self, ai: AI):

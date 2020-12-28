@@ -93,6 +93,9 @@ class APIClient(object):
         self.client = API(access_token=access_token, environment=environment)
 
     def get_balance(self) -> Balance:
+        """
+        収益の取得
+        """
         req = accounts.AccountSummary(accountID=self.account_id)
         try:
             resp = self.client.request(req)
@@ -105,6 +108,9 @@ class APIClient(object):
         return Balance(currency, available)
 
     def get_ticker(self, product_code) -> Ticker:
+        """
+        Ticker情報の取得
+        """
         params = {
             'instruments': product_code
         }
@@ -125,6 +131,9 @@ class APIClient(object):
         return Ticker(instrument, timestamp, bid, ask, volume)
 
     def get_candle_volume(self, count=1, granularity=constants.TRADE_MAP[settings.trade_duration]['granularity']):
+        """
+        現在の出来高の取得
+        """
         params = {
             'count': count,
             'granularity': granularity
@@ -139,6 +148,9 @@ class APIClient(object):
         return int(resp['candles'][0]['volume'])
 
     def get_realtime_ticker(self, callback):
+        """
+        Ticker情報の取得
+        """
         req = PricingStream(accountID=self.account_id, params={
             'instruments': settings.product_code})
         try:
