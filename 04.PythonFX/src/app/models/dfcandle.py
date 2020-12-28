@@ -86,10 +86,10 @@ class Macd(Serializer):
 
 
 class DataFrameCandle(object):
-"""
-データフレームcandleクラス
-candle情報をデータフレームオブジェクトで管理する
-"""
+    """
+    データフレームcandleクラス
+    candle情報をデータフレームオブジェクトで管理する
+    """
     def __init__(self, product_code=settings.product_code, duration=settings.trade_duration):
         self.product_code = product_code
         self.duration = duration

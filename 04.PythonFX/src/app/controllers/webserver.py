@@ -143,5 +143,5 @@ def api_make_handler():
 
 
 def start():
-    # app.run(host='127.0.0.1', port=settings.web_port, threaded=True)
-    app.run(host='0.0.0.0', port=settings.web_port, threaded=True)
+    app.run(host='127.0.0.1', port=settings.web_port, threaded=True)
+    #app.run(host='0.0.0.0', port=settings.web_port, threaded=True)

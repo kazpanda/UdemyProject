@@ -4,3 +4,26 @@ TA-LIBのインストール方法
 下記のコマンドを実行
 # pip install TA_Lib-0.4.19-cp37-cp37m-win_amd64.whl
 
+VSCodeでインテリセンスが効かないとき
+下記を追加する
+~~~
+settings.json
+{
+    "python.analysis.extraPaths": [
+        "DoNotTouchThisFolder"
+    ], 
+}
+~~~
+
+omitempty出来ない対応
+~~~
+set PYTHONUTF8=1
+pip install omitempty
+~~~
+
+VSCode
+python環境
+pylance
+excel viewr
+sanddance
+

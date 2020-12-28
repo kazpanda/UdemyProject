@@ -64,7 +64,7 @@ class BaseCandleMixin(object):
     @classmethod
     def get_all_candles(cls, limit=100):
         """
-        間ドルの取得（全て）
+        candleの取得（全て）
         """
         with session_scope() as session:
             candles = session.query(cls).order_by(
@@ -87,46 +87,107 @@ class BaseCandleMixin(object):
             'volume': self.volume,
         }
 
+class GbpJpyBaseCandle1D(BaseCandleMixin, Base):
+    """
+    ファクトリークラス
+    """
+    __tablename__ = 'GBP_JPY_1D'
+
+
+class GbpJpyBaseCandle4H(BaseCandleMixin, Base):
+    """
+    ファクトリークラス
+    """
+    __tablename__ = 'GBP_JPY_4H'
+
+class GbpJpyBaseCandle1H(BaseCandleMixin, Base):
+    """
+    ファクトリークラス
+    """
+    __tablename__ = 'GBP_JPY_1H'
+
+
+class GbpJpyBaseCandle1M(BaseCandleMixin, Base):
+    """
+    ファクトリークラス
+    """
+    __tablename__ = 'GBP_JPY_1M'
+
+
+class GbpJpyBaseCandle5S(BaseCandleMixin, Base):
+    """
+    ファクトリークラス
+    """
+    __tablename__ = 'GBP_JPY_5S'
+
+
+class UsdJpyBaseCandle1D(BaseCandleMixin, Base):
+    """
+    ファクトリークラス
+    """
+    __tablename__ = 'USD_JPY_1D'
+
+
+class UsdJpyBaseCandle4H(BaseCandleMixin, Base):
+    """
+    ファクトリークラス
+    """
+    __tablename__ = 'USD_JPY_4H'
 
 class UsdJpyBaseCandle1H(BaseCandleMixin, Base):
-"""
-ファクトリークラス
-"""
+    """
+    ファクトリークラス
+    """
     __tablename__ = 'USD_JPY_1H'
 
 
 class UsdJpyBaseCandle1M(BaseCandleMixin, Base):
-"""
-ファクトリークラス
-"""
+    """
+    ファクトリークラス
+    """
     __tablename__ = 'USD_JPY_1M'
 
 
 class UsdJpyBaseCandle5S(BaseCandleMixin, Base):
-"""
-ファクトリークラス
-"""
+    """
+    ファクトリークラス
+    """
     __tablename__ = 'USD_JPY_5S'
 
 
 def factory_candle_class(product_code, duration):
-"""
-ファクトリ生成
-"""
-    if product_code == constants.PRODUCT_CODE_USD_JPY:
+    """
+    ファクトリ生成
+    """
+    if product_code == constants.PRODUCT_CODE_GBP_JPY:
+        if duration == constants.DURATION_5S:
+            return GbpJpyBaseCandle5S
+        if duration == constants.DURATION_1M:
+            return GbpJpyBaseCandle1M
+        if duration == constants.DURATION_1H:
+            return GbpJpyBaseCandle1H
+        if duration == constants.DURATION_4H:
+            return GbpJpyBaseCandle4H
+        if duration == constants.DURATION_1D:
+            return GbpJpyBaseCandle1D
+    elif product_code == constants.PRODUCT_CODE_USD_JPY:
         if duration == constants.DURATION_5S:
             return UsdJpyBaseCandle5S
         if duration == constants.DURATION_1M:
             return UsdJpyBaseCandle1M
         if duration == constants.DURATION_1H:
             return UsdJpyBaseCandle1H
+        if duration == constants.DURATION_4H:
+            return UsdJpyBaseCandle4H
+        if duration == constants.DURATION_1D:
+            return UsdJpyBaseCandle1D
 
 
 def create_candle_with_duration(product_code, duration, ticker):
-"""
-candleの生成
-tick情報から生成する
-"""
+    """
+    candleの生成
+    tick情報から生成する
+    """
     cls = factory_candle_class(product_code, duration)
     ticker_time = ticker.truncate_date_time(duration)
     current_candle = cls.get(ticker_time)
