@@ -14,6 +14,10 @@ logger = logging.getLogger(__name__)
 
 
 class StreamData(object):
+    """
+    ストリームデータ取得クラス
+    ストリーム取得はこのクラスを通じて取得を行う
+    """
 
     def __init__(self):
         self.ai = AI(
@@ -27,15 +31,16 @@ class StreamData(object):
 
     def stream_ingestion_data(self):
         """
-        Streamデータの取得
+        OandaAPIを通じてStreamデータの取得
         """
+        
         trade_with_ai = partial(self.trade, ai=self.ai)
-        # 現在のTicker情報の取得
+        # 現在のTicker情報の取得(OandaAPI)
         self.ai.API.get_realtime_ticker(callback=trade_with_ai)
 
     def trade(self, ticker: Ticker, ai: AI):
         """
-        トレード実行スレッド
+        OandaAPIを通じてトレード実行スレッド
         """
         logger.info(f'action=trade ticker={ticker.__dict__}')
         for duration in constants.DURATIONS:

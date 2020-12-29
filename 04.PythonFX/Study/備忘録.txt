@@ -27,3 +27,6 @@ pylance
 excel viewr
 sanddance
 
+@property
+直接アクセスができる
+変数ではなくメソッドでアクセスができるので安全

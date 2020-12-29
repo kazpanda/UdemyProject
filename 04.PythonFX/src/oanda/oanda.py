@@ -29,7 +29,13 @@ class Balance(object):
 
 
 class Ticker(object):
+    """
+    Tickerクラス
+    """
     def __init__(self, product_code, timestamp, bid, ask, volume):
+        """
+        インスタンス化メソッド
+        """
         self.product_code = product_code
         self.timestamp = timestamp
         self.bid = bid
@@ -38,6 +44,9 @@ class Ticker(object):
 
     @property
     def mid_price(self):
+        """
+        @propertyで外部から直接アクセスが可能
+        """
         return (self.bid + self.ask) / 2
 
     @property
@@ -162,7 +171,9 @@ class APIClient(object):
                     bid = float(resp['bids'][0]['price'])
                     ask = float(resp['asks'][0]['price'])
                     volume = self.get_candle_volume()
+                    # Tick情報をOandaより取得するTickerメソッド
                     ticker = Ticker(instrument, timestamp, bid, ask, volume)
+                    # tickerをコールバック関数で返す
                     callback(ticker)
 
         except V20Error as e:

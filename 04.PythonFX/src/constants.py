@@ -4,7 +4,7 @@ DURATION_1H = '1h'
 DURATION_4H = '4h'
 DURATION_1D = '1d'
 
-DURATIONS = [DURATION_5S, DURATION_1M, DURATION_1H]
+DURATIONS = [DURATION_5S, DURATION_1M, DURATION_1H, DURATION_4H, DURATION_1D]
 
 GRANULARITY_5S = 'S5'
 GRANULARITY_1M = 'M1'
@@ -24,6 +24,14 @@ TRADE_MAP = {
     DURATION_1H: {
         'duration': DURATION_1H,
         'granularity': GRANULARITY_1H,
+    },
+    DURATION_4H: {
+        'duration': DURATION_4H,
+        'granularity': GRANULARITY_4H,
+    },
+    DURATION_1D: {
+        'duration': DURATION_1D,
+        'granularity': GRANULARITY_1D,
     }
 }
 
